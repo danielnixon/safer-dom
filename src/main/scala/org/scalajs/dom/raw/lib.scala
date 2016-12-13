@@ -5344,6 +5344,7 @@ class Event extends js.Object {
 
   def `type`: String = js.native
 
+  @deprecated("Non standard.", "forever")
   def srcElement: Element = js.native
 
   /**
@@ -6688,8 +6689,10 @@ trait AudioTrackList extends EventTarget with DOMList[AudioTrack] {
 
 @js.native
 trait WindowTimersExtension extends js.Object {
+  @deprecated("Non standard.", "forever")
   def clearImmediate(handle: Int): Unit = js.native
 
+  @deprecated("Non standard.", "forever")
   def setImmediate(handler: js.Function0[Any]): Int = js.native
 }
 

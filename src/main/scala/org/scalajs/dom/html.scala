@@ -5,12 +5,14 @@ package org.scalajs.dom
  */
 object html {
   type Anchor = raw.HTMLAnchorElement
+  @deprecated("Obsolete.", "HTML 5")
   type Applet = raw.HTMLAppletElement
   type Audio = raw.HTMLAudioElement
   type Area = raw.HTMLAreaElement
   type AreasCollection = raw.HTMLAreasCollection
   type Base = raw.HTMLBaseElement
   type BaseFont = raw.HTMLBaseFontElement
+  @deprecated("Non standard.", "forever")
   type BGSound = raw.HTMLBGSoundElement
   type BlockElement = raw.HTMLBlockElement
   type Body = raw.HTMLBodyElement
@@ -28,6 +30,7 @@ object html {
   type Element = raw.HTMLElement
   type Embed = raw.HTMLEmbedElement
   type FieldSet = raw.HTMLFieldSetElement
+  @deprecated("Obsolete.", "HTML 4.01")
   type Font = raw.HTMLFontElement
   type Form = raw.HTMLFormElement
   type Frame = raw.HTMLFrameElement
@@ -39,18 +42,21 @@ object html {
   type IFrame = raw.HTMLIFrameElement
   type Image = raw.HTMLImageElement
   type Input = raw.HTMLInputElement
+  @deprecated("Obsolete.", "HTML 4.01")
   type IsIndex = raw.HTMLIsIndexElement
   type Label = raw.HTMLLabelElement
   type Legend = raw.HTMLLegendElement
   type LI = raw.HTMLLIElement
   type Link = raw.HTMLLinkElement
   type Map = raw.HTMLMapElement
+  @deprecated("Obsolete.", "HTML 5")
   type Marquee = raw.HTMLMarqueeElement
   type Media = raw.HTMLMediaElement
   @inline def Media = raw.HTMLMediaElement
   type Menu = raw.HTMLMenuElement
   type Meta = raw.HTMLMetaElement
   type Mod = raw.HTMLModElement
+  @deprecated("Obsolete.", "HTML 3.2")
   type NextIdElement = raw.HTMLNextIdElement
   type Object = raw.HTMLObjectElement
   type OList = raw.HTMLOListElement

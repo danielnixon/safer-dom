@@ -798,6 +798,7 @@ abstract class HTMLBaseElement extends HTMLElement {
 }
 
 @js.native
+@deprecated("Obsolete.", "HTML 3.2")
 trait HTMLNextIdElement extends HTMLElement {
   var n: String = js.native
 }
@@ -830,6 +831,7 @@ trait HTMLAreasCollection extends HTMLCollection {
 }
 
 @js.native
+@deprecated("Obsolete.", "HTML 5")
 abstract class HTMLAppletElement extends HTMLElement {
   var width: Double = js.native
   var codeType: String = js.native
@@ -1143,6 +1145,7 @@ abstract class HTMLLinkElement extends HTMLElement with LinkStyle {
 }
 
 @js.native
+@deprecated("Obsolete.", "HTML 4.01")
 abstract class HTMLFontElement extends HTMLElement {
   var face: String = js.native
 }
@@ -3719,6 +3722,7 @@ abstract class HTMLFieldSetElement extends HTMLElement {
 }
 
 @js.native
+@deprecated("Non standard.", "forever")
 abstract class HTMLBGSoundElement extends HTMLElement {
   var balance: js.Any = js.native
   var volume: js.Any = js.native
@@ -4232,6 +4236,7 @@ abstract class HTMLOptGroupElement extends HTMLElement {
  * MDN
  */
 @js.native
+@deprecated("Obsolete.", "HTML 4.01")
 abstract class HTMLIsIndexElement extends HTMLElement {
 
   /**
@@ -4378,6 +4383,7 @@ abstract class HTMLTrackElement extends HTMLElement {
 }
 
 @js.native
+@deprecated("Obsolete.", "HTML 5")
 abstract class HTMLMarqueeElement extends HTMLElement {
   var width: String = js.native
   var onbounce: js.Function1[Event, _] = js.native
