@@ -11,6 +11,7 @@ object html {
   type Area = raw.HTMLAreaElement
   type AreasCollection = raw.HTMLAreasCollection
   type Base = raw.HTMLBaseElement
+  @deprecated("Obsolete.", "DOM Level 2")
   type BaseFont = raw.HTMLBaseFontElement
   @deprecated("Non standard.", "forever")
   type BGSound = raw.HTMLBGSoundElement
@@ -22,6 +23,7 @@ object html {
   type Collection = raw.HTMLCollection
   type DataList = raw.HTMLDataListElement
   type DD = raw.HTMLDDElement
+  @deprecated("Obsolete.", "HTML 4")
   type Directory = raw.HTMLDirectoryElement
   type Div = raw.HTMLDivElement
   type DList = raw.HTMLDListElement
@@ -33,7 +35,9 @@ object html {
   @deprecated("Obsolete.", "HTML 4.01")
   type Font = raw.HTMLFontElement
   type Form = raw.HTMLFormElement
+  @deprecated("Obsolete.", "HTML 5")
   type Frame = raw.HTMLFrameElement
+  @deprecated("Obsolete.", "HTML 5")
   type FrameSet = raw.HTMLFrameSetElement
   type Head = raw.HTMLHeadElement
   type Heading = raw.HTMLHeadingElement

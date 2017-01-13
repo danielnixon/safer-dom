@@ -6731,6 +6731,7 @@ trait AnimationEvent extends Event {
    *
    * MDN
    */
+  @deprecated("Non-standard", "forever")
   def initAnimationEvent(typeArg: String, canBubbleArg: Boolean,
       cancelableArg: Boolean, animationNameArg: String,
       elapsedTimeArg: Int): Unit = js.native

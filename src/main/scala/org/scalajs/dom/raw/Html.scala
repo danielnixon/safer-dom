@@ -210,6 +210,7 @@ abstract class HTMLDocument extends Document {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   def applets: HTMLCollection = js.native
 
   /**
@@ -220,14 +221,14 @@ abstract class HTMLDocument extends Document {
   def images: HTMLCollection = js.native
 
   /**
-   * Returns the current value of the current range for a formating command.
+   * Returns the current value of the current range for a formatting command.
    *
    * MDN
    */
   def queryCommandValue(commandId: String): String = js.native
 
   /**
-   * Returns true if the formating command is in an indeterminate state on the current
+   * Returns true if the formatting command is in an indeterminate state on the current
    * range.
    *
    * MDN
@@ -251,14 +252,14 @@ abstract class HTMLDocument extends Document {
   def queryCommandSupported(commandId: String): Boolean = js.native
 
   /**
-   * Returns true if the formating command can be executed on the current range.
+   * Returns true if the formatting command can be executed on the current range.
    *
    * MDN
    */
   def queryCommandEnabled(commandId: String): Boolean = js.native
 
   /**
-   * Returns true if the formating command has been executed on the current range.
+   * Returns true if the formatting command has been executed on the current range.
    *
    * MDN
    */
@@ -562,6 +563,7 @@ abstract class HTMLTableElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var width: String = js.native
 
   /**
@@ -570,6 +572,7 @@ abstract class HTMLTableElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var cellSpacing: String = js.native
 
   /**
@@ -592,6 +595,7 @@ abstract class HTMLTableElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var frame: String = js.native
 
   /**
@@ -612,6 +616,7 @@ abstract class HTMLTableElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var rules: String = js.native
 
   /**
@@ -620,6 +625,7 @@ abstract class HTMLTableElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var summary: String = js.native
 
   /**
@@ -663,6 +669,7 @@ abstract class HTMLTableElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var align: String = js.native
 
   /**
@@ -672,6 +679,7 @@ abstract class HTMLTableElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var cellPadding: String = js.native
 
   /**
@@ -680,6 +688,7 @@ abstract class HTMLTableElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var border: String = js.native
 
   /**
@@ -820,6 +829,7 @@ abstract class HTMLParagraphElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var align: String = js.native
 }
 
@@ -1071,6 +1081,7 @@ abstract class HTMLMetaElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var scheme: String = js.native
   var charset: String = js.native
 }
@@ -1134,6 +1145,7 @@ abstract class HTMLLinkElement extends HTMLElement with LinkStyle {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var charset: String = js.native
 
   /**
@@ -1166,7 +1178,10 @@ abstract class HTMLTableCaptionElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var align: String = js.native
+
+  @deprecated("Obsolete.", "HTML 5")
   var vAlign: String = js.native
 }
 
@@ -1326,6 +1341,8 @@ abstract class HTMLImageElement extends HTMLElement {
    * MDN
    */
   var width: Int = js.native
+
+  @deprecated("Obsolete.", "HTML 5")
   var vspace: Int = js.native
 
   /**
@@ -1347,6 +1364,7 @@ abstract class HTMLImageElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var align: String = js.native
 
   /**
@@ -1369,6 +1387,8 @@ abstract class HTMLImageElement extends HTMLElement {
    * MDN
    */
   var naturalWidth: Int = js.native
+
+  @deprecated("Obsolete.", "HTML 5")
   var name: String = js.native
 
   /**
@@ -1384,6 +1404,7 @@ abstract class HTMLImageElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var border: String = js.native
 
   /**
@@ -1391,6 +1412,7 @@ abstract class HTMLImageElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var hspace: Int = js.native
 
   /**
@@ -1398,7 +1420,9 @@ abstract class HTMLImageElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var longDesc: String = js.native
+
   var href: String = js.native
 
   /**
@@ -1522,6 +1546,7 @@ abstract class HTMLAreaElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var noHref: Boolean = js.native
 
   /**
@@ -1711,6 +1736,8 @@ abstract class HTMLScriptElement extends HTMLElement {
    * MDN
    */
   var src: String = js.native
+
+  @deprecated("Obsolete.", "HTML 5")
   var htmlFor: String = js.native
 
   /**
@@ -1784,6 +1811,7 @@ abstract class HTMLTableRowElement
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var align: String = js.native
   var borderColorLight: js.Any = js.native
 
@@ -1834,10 +1862,12 @@ abstract class HTMLHtmlElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var version: String = js.native
 }
 
 @js.native
+@deprecated("Obsolete.", "HTML 5")
 abstract class HTMLFrameElement extends HTMLElement with GetSVGDocument {
   var width: js.Any = js.native
   var scrolling: String = js.native
@@ -1900,6 +1930,7 @@ abstract class HTMLTableHeaderCellElement extends HTMLTableCellElement
 abstract class HTMLDListElement extends HTMLElement
 
 @js.native
+@deprecated("Obsolete.", "HTML 5")
 abstract class HTMLFrameSetElement extends HTMLElement {
   var ononline: js.Function1[Event, _] = js.native
   var borderColor: js.Any = js.native
@@ -1956,6 +1987,7 @@ abstract class HTMLLegendElement extends HTMLElement {
 }
 
 @js.native
+@deprecated("Obsolete.", "HTML 4")
 abstract class HTMLDirectoryElement extends HTMLElement
 
 /**
@@ -2038,6 +2070,7 @@ abstract class HTMLIFrameElement extends HTMLElement with GetSVGDocument {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var longDesc: String = js.native
   var security: js.Any = js.native
   var onload: js.Function1[Event, _] = js.native
@@ -2077,6 +2110,8 @@ abstract class HTMLBodyElement extends HTMLElement {
    * MDN
    */
   var onmessage: js.Function1[MessageEvent, _] = js.native
+
+  @deprecated("Obsolete.", "HTML 5")
   var text: js.Any = js.native
 
   /**
@@ -2096,7 +2131,11 @@ abstract class HTMLBodyElement extends HTMLElement {
    * MDN
    */
   var onresize: js.Function1[UIEvent, _] = js.native
+
+  @deprecated("Obsolete.", "HTML 5")
   var link: js.Any = js.native
+
+  @deprecated("Obsolete.", "HTML 5")
   var aLink: js.Any = js.native
 
   /**
@@ -2106,6 +2145,8 @@ abstract class HTMLBodyElement extends HTMLElement {
    * MDN
    */
   var onafterprint: js.Function1[Event, _] = js.native
+
+  @deprecated("Obsolete.", "HTML 5")
   var vLink: js.Any = js.native
 
   /**
@@ -2148,6 +2189,8 @@ abstract class HTMLBodyElement extends HTMLElement {
    * MDN
    */
   var onload: js.Function1[Event, _] = js.native
+
+  @deprecated("Non standard.", "forever")
   var rightMargin: js.Any = js.native
 
   /**
@@ -2157,6 +2200,8 @@ abstract class HTMLBodyElement extends HTMLElement {
    * MDN
    */
   var onbeforeunload: js.Function1[BeforeUnloadEvent, _] = js.native
+
+  @deprecated("Non standard.", "forever")
   var leftMargin: js.Any = js.native
 
   /**
@@ -2195,6 +2240,7 @@ abstract class HTMLTableSectionElement
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var align: String = js.native
 
   /**
@@ -2662,6 +2708,7 @@ abstract class HTMLAnchorElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var coords: String = js.native
 
   /**
@@ -2699,6 +2746,7 @@ abstract class HTMLAnchorElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var name: String = js.native
 
   /**
@@ -2745,6 +2793,7 @@ abstract class HTMLAnchorElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var rev: String = js.native
 
   /**
@@ -2752,6 +2801,7 @@ abstract class HTMLAnchorElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var shape: String = js.native
   var `type`: String = js.native
   var mimeType: String = js.native
@@ -2797,6 +2847,7 @@ abstract class HTMLParamElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var `type`: String = js.native
 
   /**
@@ -2805,6 +2856,7 @@ abstract class HTMLParamElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var valueType: String = js.native
 }
 
@@ -2824,6 +2876,7 @@ abstract class HTMLPreElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var width: Int = js.native
 }
 
@@ -2966,6 +3019,7 @@ abstract class HTMLTableCellElement
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var width: Int = js.native
 
   /**
@@ -2991,6 +3045,7 @@ abstract class HTMLTableCellElement
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var align: String = js.native
 
   /**
@@ -3007,6 +3062,7 @@ abstract class HTMLTableCellElement
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var axis: String = js.native
 
   /**
@@ -3015,6 +3071,7 @@ abstract class HTMLTableCellElement
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var height: js.Any = js.native
 
   /**
@@ -3023,6 +3080,7 @@ abstract class HTMLTableCellElement
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var noWrap: Boolean = js.native
 
   /**
@@ -3042,6 +3100,7 @@ abstract class HTMLTableCellElement
  * MDN
  */
 @js.native
+@deprecated("Obsolete.", "DOM Level 2")
 abstract class HTMLBaseFontElement extends HTMLElement {
 
   /**
@@ -3295,6 +3354,8 @@ abstract class HTMLModElement extends HTMLElement {
 @js.native
 abstract class HTMLTableColElement
     extends HTMLElement with HTMLTableAlignment {
+
+  @deprecated("Obsolete.", "HTML 5")
   var width: js.Any = js.native
 
   /**
@@ -3302,6 +3363,7 @@ abstract class HTMLTableColElement
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var align: String = js.native
 
   /**
@@ -3315,8 +3377,11 @@ abstract class HTMLTableColElement
 
 @js.native
 trait HTMLTableAlignment extends js.Object {
+  @deprecated("Obsolete.", "HTML 5")
   var ch: String = js.native
+  @deprecated("Obsolete.", "HTML 5")
   var vAlign: String = js.native
+  @deprecated("Obsolete.", "HTML 5")
   var chOff: String = js.native
 }
 
@@ -3347,6 +3412,7 @@ abstract class HTMLDivElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var align: String = js.native
 }
 
@@ -3364,6 +3430,7 @@ abstract class HTMLBRElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var clear: String = js.native
 }
 
@@ -3659,6 +3726,8 @@ abstract class HTMLDTElement extends HTMLElement {
  */
 @js.native
 abstract class HTMLFieldSetElement extends HTMLElement {
+
+  @deprecated("Obsolete.", "HTML 5")
   var align: String = js.native
 
   /**
@@ -3997,6 +4066,7 @@ abstract class HTMLElement extends Element {
  */
 @js.native
 abstract class HTMLHRElement extends HTMLElement {
+  @deprecated("Obsolete.", "HTML 5")
   var width: Double = js.native
 
   /**
@@ -4005,6 +4075,7 @@ abstract class HTMLHRElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var align: String = js.native
 }
 
@@ -4032,6 +4103,7 @@ abstract class HTMLObjectElement extends HTMLElement with GetSVGDocument {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var codeType: String = js.native
   var `object`: Object = js.native
 
@@ -4048,6 +4120,7 @@ abstract class HTMLObjectElement extends HTMLElement with GetSVGDocument {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var code: String = js.native
 
   /**
@@ -4056,6 +4129,7 @@ abstract class HTMLObjectElement extends HTMLElement with GetSVGDocument {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var archive: String = js.native
 
   /**
@@ -4064,6 +4138,7 @@ abstract class HTMLObjectElement extends HTMLElement with GetSVGDocument {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var standby: String = js.native
   var alt: String = js.native
   var classid: String = js.native
@@ -4113,6 +4188,7 @@ abstract class HTMLObjectElement extends HTMLElement with GetSVGDocument {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var codeBase: String = js.native
 
   /**
@@ -4121,6 +4197,7 @@ abstract class HTMLObjectElement extends HTMLElement with GetSVGDocument {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var declare: Boolean = js.native
   var `type`: String = js.native
   var BaseHref: String = js.native
@@ -4429,6 +4506,7 @@ abstract class HTMLHeadElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var profile: String = js.native
 }
 
@@ -4447,6 +4525,7 @@ abstract class HTMLHeadingElement extends HTMLElement {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "HTML 5")
   var align: String = js.native
 }
 
