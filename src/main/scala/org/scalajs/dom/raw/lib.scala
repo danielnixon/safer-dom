@@ -262,6 +262,7 @@ class TreeWalker extends js.Object {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "WHATWG DOM")
   def expandEntityReferences: Boolean = js.native
 
   /**
@@ -1641,6 +1642,7 @@ class NodeIterator extends js.Object {
    *
    * MDN
    */
+  @deprecated("Obsolete.", "WHATWG DOM")
   def expandEntityReferences: Boolean = js.native
 
   /**
