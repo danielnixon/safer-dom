@@ -1310,6 +1310,7 @@ abstract class HTMLCollection extends DOMList[Element] {
    *
    * MDN
    */
+  @deprecated("Non-standard.", "forever")
   def item(nameOrIndex: js.Any = js.native,
       optionalIndex: js.Any = js.native): Element = js.native
 
