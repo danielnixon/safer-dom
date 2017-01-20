@@ -4,9 +4,6 @@ import scala.scalajs.js
 
 package object dom {
 
-  @deprecated(message = "Import from org.scalajs.dom.webworkers instead.",
-      since = "0.9.0")
-  type AbstractWorker = webworkers.AbstractWorker
   type AnalyserNode = raw.AnalyserNode
   type AnimationEvent = raw.AnimationEvent
   type ApplicationCache = raw.ApplicationCache
@@ -140,10 +137,6 @@ package object dom {
   type NodeListOf[TNode <: Node] = raw.NodeListOf[TNode]
 
   type OfflineAudioContext = raw.OfflineAudioContext
-  @deprecated(
-      "Use the promise version of OfflineAudioContext.startRendering instead.",
-      "forever")
-  type OfflineAudioCompletionEvent = raw.OfflineAudioCompletionEvent
   type OscillatorNode = raw.OscillatorNode
 
   type PannerNode = raw.PannerNode
@@ -213,12 +206,8 @@ package object dom {
   type WindowLocalStorage = raw.WindowLocalStorage
   type WindowSessionStorage = raw.WindowSessionStorage
   type WindowTimers = raw.WindowTimers
-  type WindowTimersExtension = raw.WindowTimersExtension
 
   type WindowBase64 = raw.WindowBase64
-  @deprecated(message = "Import from org.scalajs.dom.webworkers instead.",
-      since = "0.9.0")
-  type Worker = raw.Worker
 
   type XMLHttpRequest = raw.XMLHttpRequest
   lazy val XMLHttpRequest: raw.XMLHttpRequest.type = raw.XMLHttpRequest

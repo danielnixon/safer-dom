@@ -256,16 +256,6 @@ class TreeWalker extends js.Object {
   var currentNode: Node = js.native
 
   /**
-   * The TreeWalker.expandEntityReferences read-only property returns a Boolean
-   * flag indicating whether or not the children of entity reference nodes are visible
-   * to the TreeWalker.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "WHATWG DOM")
-  def expandEntityReferences: Boolean = js.native
-
-  /**
    * The TreeWalker.previousSibling() method moves the current Node to its previous
    * sibling, if any, and returns the found sibling. I there is no such node, return null
    * and the current node is not changed.
@@ -446,7 +436,7 @@ class CompositionEvent extends UIEvent {
 }
 
 @js.native
-trait WindowTimers extends WindowTimersExtension {
+trait WindowTimers {
 
   /**
    * Clears the delay set by window.setTimeout().
@@ -1634,16 +1624,6 @@ class NodeIterator extends js.Object {
    * MDN
    */
   def root: Node = js.native
-
-  /**
-   * The NodeIterator.expandEntityReferences read-only property returns a Boolean
-   * flag indicating whether or not the children of entity reference nodes are visible
-   * to the NodeIterator.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "WHATWG DOM")
-  def expandEntityReferences: Boolean = js.native
 
   /**
    * The NodeIterator.nextNode() method returns the next node in the set represented
@@ -2956,16 +2936,6 @@ abstract class Document
    */
   def createTreeWalker(root: Node, whatToShow: Int, filter: NodeFilter,
       entityReferenceExpansion: Boolean): TreeWalker = js.native
-
-  /**
-   * Releases mouse capture if it's currently enabled on an element within this
-   * document. Enabling mouse capture on an element is done by calling
-   * element.setCapture().
-   *
-   * MDN
-   */
-  @deprecated("Non standard.", "forever")
-  def releaseCapture(): Unit = js.native
 }
 
 /**
@@ -3860,9 +3830,6 @@ object ClipboardEventInit {
 @js.native
 class ClipboardEvent(`type`: String, settings: ClipboardEventInit)
     extends Event {
-  @deprecated("Use the overload with a ClipboardEventInit instead.", "0.8.1")
-  def this(`type`: String, settings: js.Dynamic) =
-    this(`type`, settings.asInstanceOf[ClipboardEventInit])
 
   /**
    * Is a DataTransfer object containing the data affected by the user-initialed cut, copy,
@@ -5328,9 +5295,6 @@ class Event extends js.Object {
 
   def `type`: String = js.native
 
-  @deprecated("Non standard.", "forever")
-  def srcElement: Element = js.native
-
   /**
    * A boolean indicating whether the event bubbles up through the DOM or not.
    *
@@ -6671,15 +6635,6 @@ trait AudioTrackList extends EventTarget with DOMList[AudioTrack] {
   def getTrackById(id: String): AudioTrack = js.native
 }
 
-@js.native
-trait WindowTimersExtension extends js.Object {
-  @deprecated("Non standard.", "forever")
-  def clearImmediate(handle: Int): Unit = js.native
-
-  @deprecated("Non standard.", "forever")
-  def setImmediate(handler: js.Function0[Any]): Int = js.native
-}
-
 /**
  * The AnimationEvent interface represents events providing information related
  * to animations.
@@ -6707,18 +6662,6 @@ trait AnimationEvent extends Event {
    * MDN
    */
   def elapsedTime: Double = js.native
-
-  /**
-   * The AnimationEvent.initAnimationEvent() method Initializes an animation
-   * event created using the deprecated Document.createEvent("AnimationEvent")
-   * method.
-   *
-   * MDN
-   */
-  @deprecated("Non-standard", "forever")
-  def initAnimationEvent(typeArg: String, canBubbleArg: Boolean,
-      cancelableArg: Boolean, animationNameArg: String,
-      elapsedTimeArg: Int): Unit = js.native
 }
 
 @js.native

@@ -95,47 +95,6 @@ abstract class HTMLDocument extends Document {
   var uniqueID: String = js.native
 
   /**
-   * fgColor gets/sets the foreground color, or text color, of the current document.
-   *
-   * MDN
-   */
-  @deprecated("Use the CSS style color instead.", "DOM Level 2")
-  var fgColor: String = js.native
-
-  /**
-   * The default value for this property in Mozilla Firefox is white (#ffffff in
-   * hexadecimal).
-   *
-   * MDN
-   */
-  @deprecated("Use the CSS style background-color instead.", "DOM Level 2")
-  var bgColor: String = js.native
-
-  /**
-   * linkColor gets/sets the color of links within the document.
-   *
-   * MDN
-   */
-  @deprecated("Use the CSS style color with the pseudo-class :link instead.",
-      "DOM Level 2")
-  var linkColor: String = js.native
-
-  /**
-   * color is a string containing the name of the color (e.g., "blue", "darkblue", etc.)
-   * or the hexadecimal value of the color (e.g., #0000FF)
-   *
-   * MDN
-   */
-  @deprecated("Use the CSS style color with the pseudo-class :active instead.",
-      "DOM Level 2")
-  var alinkColor: String = js.native
-
-  @deprecated(
-      "Use the CSS style color with the pseudo-class :visited instead.",
-      "DOM Level 2")
-  var vlinkColor: String = js.native
-
-  /**
    * In browsers returns the window object associated with the document or null if none
    * available.
    *
@@ -204,14 +163,6 @@ abstract class HTMLDocument extends Document {
    * MDN
    */
   def plugins: HTMLCollection = js.native
-
-  /**
-   * applets returns an ordered list of the applets within a document.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  def applets: HTMLCollection = js.native
 
   /**
    * document.images returns a collection of the images in the current HTML document.
@@ -558,24 +509,6 @@ abstract class HTMLDocument extends Document {
 abstract class HTMLTableElement extends HTMLElement {
 
   /**
-   * Is a DOMString containing the length in pixels or in percentage of the desired width
-   * fo the entire table. It reflects the obsolete width attribute.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var width: String = js.native
-
-  /**
-   * Is a DOMString containing the width in pixels of the horizontal and vertical
-   * separation between cells. It reflects the obsolete cellspacing attribute.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var cellSpacing: String = js.native
-
-  /**
    * Is an HTMLTableSectionElement representing the first &lt;tfoot&gt; that is a child of
    * the element, or null if none is found. When set, if the object doesn't represent a
    * &lt;tfoot&gt;, a DOMException with the HierarchyRequestError name is thrown. If a
@@ -589,16 +522,6 @@ abstract class HTMLTableElement extends HTMLElement {
   var tFoot: HTMLTableSectionElement = js.native
 
   /**
-   * Is a DOMString containing the type of the external borders of the table. It reflects
-   * the obsolete frame attribute and can take one of the following values: "void",
-   * "above", "below", "hsides", "vsides", "lhs", "rhs", "box", or "border".
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var frame: String = js.native
-
-  /**
    * Returns a live HTMLCollection containing all the rows of the element, that is all
    * &lt;tr&gt; that are a child of the element, or a child or one of its &lt;thead&gt;, &lt;tbody&gt; and
    * &lt;tfoot&gt; children. The rows members of a &lt;thead&gt; appear first, in tree order, and
@@ -608,25 +531,6 @@ abstract class HTMLTableElement extends HTMLElement {
    * MDN
    */
   def rows: HTMLCollection = js.native
-
-  /**
-   * Is a DOMString containing the type of the internal borders of the table. It reflects
-   * the obsolete rules attribute and can take one of the following values: "none",
-   * "groups", "rows", "cols", or "all".
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var rules: String = js.native
-
-  /**
-   * Is a DOMString containing a description of the purpose or the structure of the
-   * table. It reflects the obsolete summary attribute.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var summary: String = js.native
 
   /**
    * Is an HTMLTableCaptionElement representing the first &lt;caption&gt; that is a child of
@@ -661,35 +565,6 @@ abstract class HTMLTableElement extends HTMLElement {
    * MDN
    */
   var tHead: HTMLTableSectionElement = js.native
-
-  /**
-   * Is a DOMString containing an enumerated value reflecting the align attribute. It
-   * indicates the alignment of the element's contents with respect to the surrounding
-   * context. The possible values are "left", "right", and "center".
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var align: String = js.native
-
-  /**
-   * Is a DOMString containing the width in pixels of the horizontal and vertical sapce
-   * between cell content and cell borders. It reflects the obsolete cellpadding
-   * attribute.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var cellPadding: String = js.native
-
-  /**
-   * Is a DOMString containing the width in pixels of the border of the table. It reflects
-   * the obsolete border attribute.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var border: String = js.native
 
   /**
    * Removes the row corresponding to the index given in parameter. If the index value is
@@ -806,12 +681,6 @@ abstract class HTMLBaseElement extends HTMLElement {
   var href: String = js.native
 }
 
-@js.native
-@deprecated("Obsolete.", "HTML 3.2")
-trait HTMLNextIdElement extends HTMLElement {
-  var n: String = js.native
-}
-
 /**
  * The HTMLParagraphElement interface provides special properties (beyond those
  * of the regular HTMLElement object interface it inherits) for manipulating &lt;p&gt;
@@ -820,48 +689,13 @@ trait HTMLNextIdElement extends HTMLElement {
  * MDN
  */
 @js.native
-abstract class HTMLParagraphElement extends HTMLElement {
-
-  /**
-   * Enumerated property indicating alignment of the element's contents with respect
-   * to the surrounding context. The possible values are "left", "right", "justify",
-   * and "center".
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var align: String = js.native
-}
+abstract class HTMLParagraphElement extends HTMLElement
 
 @js.native
 trait HTMLAreasCollection extends HTMLCollection {
   def remove(index: Int = js.native): Unit = js.native
 
   def add(element: HTMLElement, before: js.Any = js.native): Unit = js.native
-}
-
-@js.native
-@deprecated("Obsolete.", "HTML 5")
-abstract class HTMLAppletElement extends HTMLElement {
-  var width: Double = js.native
-  var codeType: String = js.native
-  var `object`: String = js.native
-  var form: HTMLFormElement = js.native
-  var code: String = js.native
-  var archive: String = js.native
-  var alt: String = js.native
-  var standby: String = js.native
-  var classid: String = js.native
-  var name: String = js.native
-  var useMap: String = js.native
-  var data: String = js.native
-  var height: String = js.native
-  var altHtml: String = js.native
-  var contentDocument: Document = js.native
-  var codeBase: String = js.native
-  var declare: Boolean = js.native
-  var `type`: String = js.native
-  var BaseHref: String = js.native
 }
 
 /**
@@ -1076,13 +910,6 @@ abstract class HTMLMetaElement extends HTMLElement {
   var content: String = js.native
   var url: String = js.native
 
-  /**
-   * Gets or sets the name of a scheme used to interpret the value of a meta-data property.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var scheme: String = js.native
   var charset: String = js.native
 }
 
@@ -1141,25 +968,11 @@ abstract class HTMLLinkElement extends HTMLElement with LinkStyle {
   var `type`: String = js.native
 
   /**
-   * Gets or sets the character encoding for the target resource.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var charset: String = js.native
-
-  /**
    * Gets or sets the language code for the linked resource.
    *
    * MDN
    */
   var hreflang: String = js.native
-}
-
-@js.native
-@deprecated("Obsolete.", "HTML 4.01")
-abstract class HTMLFontElement extends HTMLElement {
-  var face: String = js.native
 }
 
 /**
@@ -1170,20 +983,7 @@ abstract class HTMLFontElement extends HTMLElement {
  * MDN
  */
 @js.native
-abstract class HTMLTableCaptionElement extends HTMLElement {
-
-  /**
-   * Enumerated attribute indicating alignment of the caption with respect to the
-   * table.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var align: String = js.native
-
-  @deprecated("Obsolete.", "HTML 5")
-  var vAlign: String = js.native
-}
+abstract class HTMLTableCaptionElement extends HTMLElement
 
 /**
  * The HTMLOptionElement interface represents &lt;option&gt; elements and inherits all
@@ -1303,17 +1103,6 @@ abstract class HTMLMenuElement extends HTMLElement {
  */
 @js.native
 abstract class HTMLCollection extends DOMList[Element] {
-
-  /**
-   * Returns the specific node at the given zero-based index into the list. Returns null
-   * if the index is out of range.
-   *
-   * MDN
-   */
-  @deprecated("Non-standard.", "forever")
-  def item(nameOrIndex: js.Any = js.native,
-      optionalIndex: js.Any = js.native): Element = js.native
-
   /**
    * Returns the specific node whose ID or, as a fallback, name matches the string
    * specified by name. Matching by name is only done as a last resort, only in HTML, and
@@ -1343,9 +1132,6 @@ abstract class HTMLImageElement extends HTMLElement {
    */
   var width: Int = js.native
 
-  @deprecated("Obsolete.", "HTML 5")
-  var vspace: Int = js.native
-
   /**
    * Intrinsic height of the image in CSS pixels, if it is available; otherwise, 0.
    *
@@ -1359,14 +1145,6 @@ abstract class HTMLImageElement extends HTMLElement {
    * MDN
    */
   var alt: String = js.native
-
-  /**
-   * Indicates the alignment of the image with respect to the surrounding context.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var align: String = js.native
 
   /**
    * Reflects the src HTML attribute, containing the URL of the image.
@@ -1389,9 +1167,6 @@ abstract class HTMLImageElement extends HTMLElement {
    */
   var naturalWidth: Int = js.native
 
-  @deprecated("Obsolete.", "HTML 5")
-  var name: String = js.native
-
   /**
    * Reflects the height HTML attribute, indicating the rendered height of the image in
    * CSS pixels.
@@ -1399,30 +1174,6 @@ abstract class HTMLImageElement extends HTMLElement {
    * MDN
    */
   var height: Int = js.native
-
-  /**
-   * Width of the border around the image.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var border: String = js.native
-
-  /**
-   * Space to the left and right of the image.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var hspace: Int = js.native
-
-  /**
-   * URI of a long description of the image.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var longDesc: String = js.native
 
   var href: String = js.native
 
@@ -1541,14 +1292,6 @@ abstract class HTMLAreaElement extends HTMLElement {
    * MDN
    */
   var href: String = js.native
-
-  /**
-   * Is a Boolean flag indicating if the area is inactive (true) or active (false).
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var noHref: Boolean = js.native
 
   /**
    * Is a DOMString teflects the shape HTML attribute, indicating the shape of the
@@ -1738,9 +1481,6 @@ abstract class HTMLScriptElement extends HTMLElement {
    */
   var src: String = js.native
 
-  @deprecated("Obsolete.", "HTML 5")
-  var htmlFor: String = js.native
-
   /**
    * Represents the character encoding of the external script resource. It reflects
    * the charset attribute.
@@ -1787,7 +1527,7 @@ abstract class HTMLScriptElement extends HTMLElement {
  */
 @js.native
 abstract class HTMLTableRowElement
-    extends HTMLElement with HTMLTableAlignment {
+    extends HTMLElement {
 
   /**
    * Returns a long value which gives the logical position of the row within the entire
@@ -1805,15 +1545,6 @@ abstract class HTMLTableRowElement
    */
   def cells: HTMLCollection = js.native
 
-  /**
-   * Is a DOMString containing an enumerated value reflecting the align attribute. It
-   * indicates the alignment of the element's contents with respect to the surrounding
-   * context. The possible values are "left", "right", and "center".
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var align: String = js.native
   var borderColorLight: js.Any = js.native
 
   /**
@@ -1855,39 +1586,7 @@ abstract class HTMLTableRowElement
  * MDN
  */
 @js.native
-abstract class HTMLHtmlElement extends HTMLElement {
-
-  /**
-   * Version of the HTML Document Type Definition (DTD) that governs this document.
-   * This property should not be used any more as it is non-conforming. Simply omit it.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var version: String = js.native
-}
-
-@js.native
-@deprecated("Obsolete.", "HTML 5")
-abstract class HTMLFrameElement extends HTMLElement with GetSVGDocument {
-  var width: js.Any = js.native
-  var scrolling: String = js.native
-  var marginHeight: String = js.native
-  var marginWidth: String = js.native
-  var borderColor: js.Any = js.native
-  var frameSpacing: js.Any = js.native
-  var frameBorder: String = js.native
-  var noResize: Boolean = js.native
-  var contentWindow: Window = js.native
-  var src: String = js.native
-  var name: String = js.native
-  var height: js.Any = js.native
-  var contentDocument: Document = js.native
-  var border: String = js.native
-  var longDesc: String = js.native
-  var onload: js.Function1[Event, _] = js.native
-  var security: js.Any = js.native
-}
+abstract class HTMLHtmlElement extends HTMLElement
 
 /**
  * The HTMLQuoteElement interface provides special properties and methods (beyond
@@ -1930,30 +1629,6 @@ abstract class HTMLTableHeaderCellElement extends HTMLTableCellElement
 @js.native
 abstract class HTMLDListElement extends HTMLElement
 
-@js.native
-@deprecated("Obsolete.", "HTML 5")
-abstract class HTMLFrameSetElement extends HTMLElement {
-  var ononline: js.Function1[Event, _] = js.native
-  var borderColor: js.Any = js.native
-  var rows: String = js.native
-  var cols: String = js.native
-  var frameSpacing: js.Any = js.native
-  var onmessage: js.Function1[MessageEvent, _] = js.native
-  var onerror: js.Function1[Event, _] = js.native
-  var frameBorder: String = js.native
-  var onresize: js.Function1[UIEvent, _] = js.native
-  var name: String = js.native
-  var onafterprint: js.Function1[Event, _] = js.native
-  var onbeforeprint: js.Function1[Event, _] = js.native
-  var onoffline: js.Function1[Event, _] = js.native
-  var border: String = js.native
-  var onunload: js.Function1[Event, _] = js.native
-  var onhashchange: js.Function1[HashChangeEvent, _] = js.native
-  var onload: js.Function1[Event, _] = js.native
-  var onbeforeunload: js.Function1[BeforeUnloadEvent, _] = js.native
-  var onstorage: js.Function1[StorageEvent, _] = js.native
-}
-
 /**
  * The HTMLLabelElement interface gives access to properties specific to &lt;label&gt;
  * elements. It inherits from HTMLElement.
@@ -1986,10 +1661,6 @@ abstract class HTMLLegendElement extends HTMLElement {
 
   def form: HTMLFormElement = js.native
 }
-
-@js.native
-@deprecated("Obsolete.", "HTML 4")
-abstract class HTMLDirectoryElement extends HTMLElement
 
 /**
  * The HTMLLIElement interface expose specific properties and methods (beyond
@@ -2066,13 +1737,6 @@ abstract class HTMLIFrameElement extends HTMLElement with GetSVGDocument {
    */
   def contentDocument: Document = js.native
 
-  /**
-   * URI of a long description of the frame.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var longDesc: String = js.native
   var security: js.Any = js.native
   var onload: js.Function1[Event, _] = js.native
 
@@ -2112,9 +1776,6 @@ abstract class HTMLBodyElement extends HTMLElement {
    */
   var onmessage: js.Function1[MessageEvent, _] = js.native
 
-  @deprecated("Obsolete.", "HTML 5")
-  var text: js.Any = js.native
-
   /**
    * Exposes the window.onerror event handler to call when the document fails to load
    * properly. Note: This handler is triggered when the event reaches the window, not
@@ -2133,12 +1794,6 @@ abstract class HTMLBodyElement extends HTMLElement {
    */
   var onresize: js.Function1[UIEvent, _] = js.native
 
-  @deprecated("Obsolete.", "HTML 5")
-  var link: js.Any = js.native
-
-  @deprecated("Obsolete.", "HTML 5")
-  var aLink: js.Any = js.native
-
   /**
    * Reflects the onafterprint HTML attribute value for a function to call after the
    * user has printed the document.
@@ -2146,9 +1801,6 @@ abstract class HTMLBodyElement extends HTMLElement {
    * MDN
    */
   var onafterprint: js.Function1[Event, _] = js.native
-
-  @deprecated("Obsolete.", "HTML 5")
-  var vLink: js.Any = js.native
 
   /**
    * Reflects the onbeforeprint HTML attribute value for a function to call when the
@@ -2191,9 +1843,6 @@ abstract class HTMLBodyElement extends HTMLElement {
    */
   var onload: js.Function1[Event, _] = js.native
 
-  @deprecated("Non standard.", "forever")
-  var rightMargin: js.Any = js.native
-
   /**
    * Reflects the onbeforeunload HTML attribute value for a function to call when the
    * document is about to be unloaded.
@@ -2201,9 +1850,6 @@ abstract class HTMLBodyElement extends HTMLElement {
    * MDN
    */
   var onbeforeunload: js.Function1[BeforeUnloadEvent, _] = js.native
-
-  @deprecated("Non standard.", "forever")
-  var leftMargin: js.Any = js.native
 
   /**
    * Reflects the onpopstate HTML attribute value for a function to call when the
@@ -2232,17 +1878,7 @@ abstract class HTMLBodyElement extends HTMLElement {
  */
 @js.native
 abstract class HTMLTableSectionElement
-    extends HTMLElement with HTMLTableAlignment {
-
-  /**
-   * Is a DOMString containing an enumerated value reflecting the align attribute. It
-   * indicates the alignment of the element's contents with respect to the surrounding
-   * context. The possible values are "left", "right", and "center".
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var align: String = js.native
+    extends HTMLElement {
 
   /**
    * Returns a live HTMLCollection containing the rows in the section. The
@@ -2705,14 +2341,6 @@ abstract class HTMLAnchorElement extends HTMLElement {
   var search: String = js.native
 
   /**
-   * Is a DOMString representing a comma-separated list of coordinates.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var coords: String = js.native
-
-  /**
    * Is a DOMString representing the hostname in the referenced URL.
    *
    * MDN
@@ -2741,14 +2369,6 @@ abstract class HTMLAnchorElement extends HTMLElement {
    * MDN
    */
   var href: String = js.native
-
-  /**
-   * Is a DOMString representing the anchor name.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var name: String = js.native
 
   /**
    * Is a DOMString representing the character encoding of the linked resource.
@@ -2788,22 +2408,6 @@ abstract class HTMLAnchorElement extends HTMLElement {
    */
   var hash: String = js.native
 
-  /**
-   * Is a DOMString representing that the rev HTML attribute, specifying the
-   * relationship of the link object to the target object.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var rev: String = js.native
-
-  /**
-   * Is a DOMString representing the shape of the active area.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var shape: String = js.native
   var `type`: String = js.native
   var mimeType: String = js.native
 
@@ -2841,24 +2445,6 @@ abstract class HTMLParamElement extends HTMLElement {
    * MDN
    */
   var name: String = js.native
-
-  /**
-   * Is a DOMString that reflects the type HTML attribute, indicating the MIME
-   * type of the linked resource
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var `type`: String = js.native
-
-  /**
-   * Is a DOMString containing the type of the value. It reflects the valuetype
-   * attribute and has one of the values: "data", "ref", or "object".
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var valueType: String = js.native
 }
 
 /**
@@ -2869,17 +2455,7 @@ abstract class HTMLParamElement extends HTMLElement {
  * MDN
  */
 @js.native
-abstract class HTMLPreElement extends HTMLElement {
-
-  /**
-   * Is a long value reflecting the obsolete width attribute, containing a fixed-size
-   * length for the &lt;pre&gt; element.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var width: Int = js.native
-}
+abstract class HTMLPreElement extends HTMLElement
 
 @js.native
 abstract class HTMLPhraseElement extends HTMLElement {
@@ -3012,16 +2588,7 @@ abstract class HTMLAudioElement extends HTMLMediaElement
  */
 @js.native
 abstract class HTMLTableCellElement
-    extends HTMLElement with HTMLTableAlignment {
-
-  /**
-   * Is a DOMString containing a length of pixel of the hinted width of the cell. It
-   * reflects the obsolete width attribute.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var width: Int = js.native
+    extends HTMLElement {
 
   /**
    * Is a DOMSettableTokenList describing a list of id of &lt;th&gt; elements that represents
@@ -3040,16 +2607,6 @@ abstract class HTMLTableCellElement
   def cellIndex: Int = js.native
 
   /**
-   * Is a DOMString containing an enumerated value reflecting the align attribute. It
-   * indicates the alignment of the element's contents with respect to the surrounding
-   * context. The possible values are "left", "right", and "center".
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var align: String = js.native
-
-  /**
    * Is an unsigned long that represents the number of columns this cell must span. It
    * reflects the colspan attribute.
    *
@@ -3058,70 +2615,12 @@ abstract class HTMLTableCellElement
   var colSpan: Int = js.native
 
   /**
-   * Is a DOMString containing a name grouping cells in virtual. It reflects the
-   * obsolete axis attribute.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var axis: String = js.native
-
-  /**
-   * Is a DOMString containing a length of pixel of the hinted height of the cell. It
-   * reflects the obsolete height attribute.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var height: js.Any = js.native
-
-  /**
-   * Is a Boolean value reflecting the nowrap attribute and indicating if cell content
-   * can be broken in several lines.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var noWrap: Boolean = js.native
-
-  /**
    * Is an unsigned long that represents the number of rows this cell must span. It
    * reflects the rowspan attribute.
    *
    * MDN
    */
   var rowSpan: Int = js.native
-}
-
-/**
- * The HTMLBaseFontElement interface provides special properties (beyond the
- * regular HTMLElement interface it also has available to it by inheritance) for
- * manipulating &lt;basefont&gt; elements.
- *
- * MDN
- */
-@js.native
-@deprecated("Obsolete.", "DOM Level 2")
-abstract class HTMLBaseFontElement extends HTMLElement {
-
-  /**
-   * Is a DOMString representing a list of one or more font names. The document text in the
-   * default style is rendered in the first font face that the client's browser
-   * supports. If no font listed is installed on the local system, the browser typically
-   * defaults to the proportional or fixed-width font for that system.
-   *
-   * MDN
-   */
-  var face: String = js.native
-
-  /**
-   * Is a DOMString representing the font size as either a numeric or relative value.
-   * Numeric values range from 1 to 7 with 1 being the smallest and 3 the default. Relative
-   * value starts with a '+' or a '-'.
-   *
-   * MDN
-   */
-  var size: Int = js.native
 }
 
 /**
@@ -3354,18 +2853,7 @@ abstract class HTMLModElement extends HTMLElement {
  */
 @js.native
 abstract class HTMLTableColElement
-    extends HTMLElement with HTMLTableAlignment {
-
-  @deprecated("Obsolete.", "HTML 5")
-  var width: js.Any = js.native
-
-  /**
-   * Indicates the horizontal alignment of the cell data in the column.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var align: String = js.native
+    extends HTMLElement {
 
   /**
    * Reflects the span HTML attribute, indicating the number of columns to apply this
@@ -3374,16 +2862,6 @@ abstract class HTMLTableColElement
    * MDN
    */
   var span: Int = js.native
-}
-
-@js.native
-trait HTMLTableAlignment extends js.Object {
-  @deprecated("Obsolete.", "HTML 5")
-  var ch: String = js.native
-  @deprecated("Obsolete.", "HTML 5")
-  var vAlign: String = js.native
-  @deprecated("Obsolete.", "HTML 5")
-  var chOff: String = js.native
 }
 
 /**
@@ -3404,18 +2882,7 @@ abstract class HTMLUListElement extends HTMLElement
  * MDN
  */
 @js.native
-abstract class HTMLDivElement extends HTMLElement {
-
-  /**
-   * Enumerated property indicating alignment of the element's contents with respect
-   * to the surrounding context. The possible values are "left", "right", "justify",
-   * and "center".
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var align: String = js.native
-}
+abstract class HTMLDivElement extends HTMLElement
 
 /**
  * The HTMLBRElement interface represents a HTML line break element (&lt;br&gt;). It
@@ -3424,16 +2891,7 @@ abstract class HTMLDivElement extends HTMLElement {
  * MDN
  */
 @js.native
-abstract class HTMLBRElement extends HTMLElement {
-
-  /**
-   * Indicates flow of text around floating objects.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var clear: String = js.native
-}
+abstract class HTMLBRElement extends HTMLElement
 
 /**
  * The HTMLMediaElement interface has special properties and methods (beyond the
@@ -3728,9 +3186,6 @@ abstract class HTMLDTElement extends HTMLElement {
 @js.native
 abstract class HTMLFieldSetElement extends HTMLElement {
 
-  @deprecated("Obsolete.", "HTML 5")
-  var align: String = js.native
-
   /**
    * The containing form element, if this element is in a form. If the button is not a
    * descendant of a form element, then the attribute can be the ID of any form element in
@@ -3789,15 +3244,6 @@ abstract class HTMLFieldSetElement extends HTMLElement {
    * MDN
    */
   def setCustomValidity(error: String): Unit = js.native
-}
-
-@js.native
-@deprecated("Non standard.", "forever")
-abstract class HTMLBGSoundElement extends HTMLElement {
-  var balance: js.Any = js.native
-  var volume: js.Any = js.native
-  var src: String = js.native
-  var loop: Double = js.native
 }
 
 /**
@@ -4066,19 +3512,7 @@ abstract class HTMLElement extends Element {
  * MDN
  */
 @js.native
-abstract class HTMLHRElement extends HTMLElement {
-  @deprecated("Obsolete.", "HTML 5")
-  var width: Double = js.native
-
-  /**
-   * Enumerated attribute indicating alignment of the rule with respect to the
-   * surrounding context.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var align: String = js.native
-}
+abstract class HTMLHRElement extends HTMLElement
 
 /**
  * The HTMLObjectElement interface provides special properties and methods
@@ -4099,13 +3533,6 @@ abstract class HTMLObjectElement extends HTMLElement with GetSVGDocument {
    */
   var width: String = js.native
 
-  /**
-   * Reflects the codetype HTML attribute, specifying the content type of the data.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var codeType: String = js.native
   var `object`: Object = js.native
 
   /**
@@ -4115,32 +3542,6 @@ abstract class HTMLObjectElement extends HTMLElement with GetSVGDocument {
    */
   def form: HTMLFormElement = js.native
 
-  /**
-   * The name of an applet class file, containing either the applet's subclass, or the
-   * path to get to the class, including the class file itself.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var code: String = js.native
-
-  /**
-   * Reflects the archive HTML attribute, containing a list of archives for resources
-   * for this object.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var archive: String = js.native
-
-  /**
-   * Reflects the standby HTML attribute, specifying a message to display while the
-   * object loads.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var standby: String = js.native
   var alt: String = js.native
   var classid: String = js.native
 
@@ -4183,23 +3584,6 @@ abstract class HTMLObjectElement extends HTMLElement with GetSVGDocument {
   def contentDocument: Document = js.native
   var altHtml: String = js.native
 
-  /**
-   * Reflects the codebase HTML attribute, specifying the base path to use to resolve
-   * relative URIs.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var codeBase: String = js.native
-
-  /**
-   * Reflects the declare HTML attribute, indicating that this is a declaration, not an
-   * instantiation, of the object.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var declare: Boolean = js.native
   var `type`: String = js.native
   var BaseHref: String = js.native
 
@@ -4304,34 +3688,6 @@ abstract class HTMLOptGroupElement extends HTMLElement {
    * MDN
    */
   var disabled: Boolean = js.native
-}
-
-/**
- * The HTMLIsIndexElement interface provides special properties (beyond the
- * regular HTMLElement interface it also has available to it by inheritance) for
- * manipulating &lt;isindex&gt; elements.
- *
- * MDN
- */
-@js.native
-@deprecated("Obsolete.", "HTML 4.01")
-abstract class HTMLIsIndexElement extends HTMLElement {
-
-  /**
-   * Is a HTMLFormElement representing the &lt;form&gt; element it belongs too. It can have
-   * the null value, if &lt;isindex&gt; isn't part of any form.
-   *
-   * MDN
-   */
-  var form: HTMLFormElement = js.native
-  var action: String = js.native
-
-  /**
-   * Is a DOMString representing a text to be prompted for the field.
-   *
-   * MDN
-   */
-  var prompt: String = js.native
 }
 
 /**
@@ -4460,28 +3816,6 @@ abstract class HTMLTrackElement extends HTMLElement {
   var label: String = js.native
 }
 
-@js.native
-@deprecated("Obsolete.", "HTML 5")
-abstract class HTMLMarqueeElement extends HTMLElement {
-  var width: String = js.native
-  var onbounce: js.Function1[Event, _] = js.native
-  var vspace: Int = js.native
-  var trueSpeed: Boolean = js.native
-  var scrollAmount: Double = js.native
-  var scrollDelay: Double = js.native
-  var behavior: String = js.native
-  var height: String = js.native
-  var loop: Int = js.native
-  var direction: String = js.native
-  var hspace: Int = js.native
-  var onstart: js.Function1[Event, _] = js.native
-  var onfinish: js.Function1[Event, _] = js.native
-
-  def stop(): Unit = js.native
-
-  def start(): Unit = js.native
-}
-
 /**
  * The HTMLSpanElement interface represents a &lt;span&gt; element and derives from the
  * HTMLElement interface, but without implementing any additional properties or
@@ -4500,16 +3834,7 @@ abstract class HTMLSpanElement extends HTMLElement
  * MDN
  */
 @js.native
-abstract class HTMLHeadElement extends HTMLElement {
-
-  /**
-   * The URIs of one or more metadata profiles (white space separated).
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var profile: String = js.native
-}
+abstract class HTMLHeadElement extends HTMLElement
 
 /**
  * The HTMLHeadingElement interface represents the different heading elements. It
@@ -4518,17 +3843,7 @@ abstract class HTMLHeadElement extends HTMLElement {
  * MDN
  */
 @js.native
-abstract class HTMLHeadingElement extends HTMLElement {
-
-  /**
-   * Enumerated attribute indicating alignment of the heading with respect to the
-   * surrounding context.
-   *
-   * MDN
-   */
-  @deprecated("Obsolete.", "HTML 5")
-  var align: String = js.native
-}
+abstract class HTMLHeadingElement extends HTMLElement
 
 /**
  * The HTMLFormElement interface provides methods to create and modify &lt;form&gt;
