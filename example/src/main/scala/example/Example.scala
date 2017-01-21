@@ -1,15 +1,15 @@
 package example
 
-import org.scalajs.dom
-import dom.html
+import org.danielnixon.saferdom
+import saferdom.html
 import scala.scalajs.js.annotation.JSExport
 
 @JSExport
 object Alert {
   @JSExport
   def main() = {
-    import org.scalajs.dom
-    dom.window.alert("Hi from Scala-js-dom")
+    import org.danielnixon.saferdom
+    saferdom.window.alert("Hi from Scala-js-dom")
   }
 }
 
@@ -17,7 +17,7 @@ object Alert {
 object NodeAppendChild {
   @JSExport
   def main(div: html.Div) = {
-    val child = dom.document
+    val child = saferdom.document
                    .createElement("div")
 
     child.textContent =
@@ -49,10 +49,10 @@ object LocalStorage {
     val key = "my-key"
 
     in.value =
-      dom.window.localStorage.getItem(key)
+      saferdom.window.localStorage.getItem(key)
 
-    in.onkeyup = { (e: dom.Event) =>
-      dom.window.localStorage.setItem(
+    in.onkeyup = { (e: saferdom.Event) =>
+      saferdom.window.localStorage.setItem(
         key, in.value
       )
       box.textContent =
@@ -66,7 +66,7 @@ object Canvas {
   @JSExport
   def main(c: html.Canvas) = {
     type Ctx2D =
-      dom.CanvasRenderingContext2D
+      saferdom.CanvasRenderingContext2D
     val ctx = c.getContext("2d")
                .asInstanceOf[Ctx2D]
     val w = 300
@@ -92,9 +92,9 @@ object Base64 {
   @JSExport
   def main(in: html.Input,
            out: html.Div) = {
-    in.onkeyup = { (e: dom.Event) =>
+    in.onkeyup = { (e: saferdom.Event) =>
       out.textContent =
-        dom.window.btoa(in.value)
+        saferdom.window.btoa(in.value)
     }
   }
 }
@@ -104,7 +104,7 @@ object EventHandler{
   @JSExport
   def main(pre: html.Pre) = {
     pre.onmousemove = {
-      (e: dom.MouseEvent) =>
+      (e: saferdom.MouseEvent) =>
         pre.textContent =
           s"""e.clientX ${e.clientX}
              |e.clientY ${e.clientY}
@@ -121,12 +121,12 @@ object EventHandler{
 object XMLHttpRequest{
   @JSExport
   def main(pre: html.Pre) = {
-    val xhr = new dom.XMLHttpRequest()
+    val xhr = new saferdom.XMLHttpRequest()
     xhr.open("GET",
       "http://api.openweathermap.org/" +
       "data/2.5/weather?q=Singapore"
     )
-    xhr.onload = { (e: dom.Event) =>
+    xhr.onload = { (e: saferdom.Event) =>
       if (xhr.status == 200) {
         pre.textContent =
           xhr.responseText
@@ -142,14 +142,14 @@ object Websocket {
   def main(in: html.Input,
            pre: html.Pre) = {
     val echo = "ws://echo.websocket.org"
-    val socket = new dom.WebSocket(echo)
+    val socket = new saferdom.WebSocket(echo)
     socket.onmessage = {
-      (e: dom.MessageEvent) =>
+      (e: saferdom.MessageEvent) =>
         pre.textContent +=
           e.data.toString
     }
-    socket.onopen = { (e: dom.Event) =>
-      in.onkeyup = { (e: dom.Event) =>
+    socket.onopen = { (e: saferdom.Event) =>
+      in.onkeyup = { (e: saferdom.Event) =>
         socket.send(in.value)
       }
     }
@@ -160,7 +160,7 @@ object Websocket {
 object AjaxExtension {
   @JSExport
   def main(pre: html.Pre) = {
-    import dom.ext.Ajax
+    import saferdom.ext.Ajax
     import scala.concurrent
                 .ExecutionContext
                 .Implicits
