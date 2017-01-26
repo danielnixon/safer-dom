@@ -3372,7 +3372,6 @@ abstract class HTMLElement extends Element {
   var onmouseenter: js.Function1[MouseEvent, _] = js.native
 
   var onmouseout: js.Function1[MouseEvent, _] = js.native
-  var parentElement: HTMLElement = js.native
   var onmousewheel: js.Function1[WheelEvent, _] = js.native
   var onvolumechange: js.Function1[Event, _] = js.native
   var filters: Object = js.native

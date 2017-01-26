@@ -968,6 +968,14 @@ abstract class Node extends EventTarget {
   private[saferdom] def parentNode: Node = js.native
 
   /**
+    * Returns an Element that is the parent of this node. If the node has no parent, or if
+    * that parent is not an Element, this property returns null.
+    *
+    * MDN
+    */
+  private[saferdom] def parentElement: Element = js.native
+
+  /**
    * Returns the node immediately following the specified one in its parent's
    * childNodes list, or null if the specified node is the last node in that list.
    *
