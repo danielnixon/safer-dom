@@ -1,6 +1,7 @@
 package example
 
 import org.danielnixon.saferdom
+import org.danielnixon.saferdom.implicits.lib._
 import saferdom.html
 import scala.scalajs.js.annotation.JSExport
 
@@ -49,7 +50,7 @@ object LocalStorage {
     val key = "my-key"
 
     in.value =
-      saferdom.window.localStorage.getItem(key)
+      saferdom.window.localStorage.getItem(key).getOrElse("")
 
     in.onkeyup = { (e: saferdom.Event) =>
       saferdom.window.localStorage.setItem(
