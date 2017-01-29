@@ -24,6 +24,18 @@ package object lib {
   }
 
   /**
+    * @see https://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathResult
+    * @see https://wiki.whatwg.org/wiki/DOM_XPath
+    */
+  implicit class SaferXPathResult(val value: org.danielnixon.saferdom.raw.XPathResult) extends AnyVal {
+    def singleNodeValue: Option[Node] = Option(value.singleNodeValue)
+
+    def iterateNext(): Option[Node] = Option(value.iterateNext())
+
+    def snapshotItem(index: Int): Option[Node] = Option(value.snapshotItem(index))
+  }
+
+  /**
     * @see https://dom.spec.whatwg.org/#treewalker
     */
   implicit class SaferTreeWalker(val value: org.danielnixon.saferdom.raw.TreeWalker) extends AnyVal {
@@ -132,6 +144,22 @@ package object lib {
     * @see https://dom.spec.whatwg.org/#interface-element
     */
   implicit class SaferElement(val value: org.danielnixon.saferdom.raw.Element) extends AnyVal {
+
+    /**
+      * The namespace URI of the element, or null if it is no namespace.
+      *
+      * MDN
+      */
+    def namespaceURI: Option[String] = Option(value.namespaceURI)
+
+    /**
+      * A DOMString representing the namespace prefix of the element, or null if no
+      * prefix is specified.
+      *
+      * MDN
+      */
+    def prefix: Option[String] = Option(value.prefix)
+
     /**
       * getAttribute() returns the value of the named attribute on the specified element.
       * If the named attribute does not exist, the value returned will either be null or ""
@@ -193,17 +221,6 @@ package object lib {
       * MDN
       */
     def previousSibling: Option[Node] = Option(value.previousSibling)
-
-    /**
-      * The namespace URI of this node, or null if it is no namespace. In Firefox 3.5 and
-      * earlier, HTML elements are in no namespace. In later versions, HTML elements are
-      * in the http://www.w3.org/1999/xhtml namespace in both HTML and XML trees.
-      * Though the specification requires namespaceURI to be defined on the Node
-      * interface, Gecko-based browsers implement it on the Element interface.
-      *
-      * MDN
-      */
-    def namespaceURI: Option[String] = Option(value.namespaceURI)
 
     /**
       * Returns a Node that is the parent of this node. If there is no such node, like if this

@@ -108,11 +108,11 @@ class XPathResult extends js.Object {
   def invalidIteratorState: Boolean = js.native
   def numberValue: Double = js.native
   def resultType: Int = js.native
-  def singleNodeValue: Node = js.native
+  private[saferdom] def singleNodeValue: Node = js.native
   def snapshotLength: Int = js.native
   def stringValue: String = js.native
-  def iterateNext(): Node = js.native
-  def snapshotItem(index: Int): Node = js.native
+  private[saferdom] def iterateNext(): Node = js.native
+  private[saferdom] def snapshotItem(index: Int): Node = js.native
 }
 
 @js.native
@@ -638,6 +638,21 @@ abstract class Element
     with NonDocumentTypeChildNode {
 
   /**
+    * The namespace URI of the element, or null if it is no namespace.
+    *
+    * MDN
+    */
+  private[saferdom] def namespaceURI: String = js.native
+
+  /**
+    * A DOMString representing the namespace prefix of the element, or null if no
+    * prefix is specified.
+    *
+    * MDN
+    */
+  private[saferdom] def prefix: String = js.native
+
+  /**
    * scrollTop gets or sets the number of pixels that the content of an element is
    * scrolled upward.
    *
@@ -940,17 +955,6 @@ abstract class Node extends EventTarget {
   def localName: String = js.native
 
   /**
-   * The namespace URI of this node, or null if it is no namespace. In Firefox 3.5 and
-   * earlier, HTML elements are in no namespace. In later versions, HTML elements are
-   * in the http://www.w3.org/1999/xhtml namespace in both HTML and XML trees.
-   * Though the specification requires namespaceURI to be defined on the Node
-   * interface, Gecko-based browsers implement it on the Element interface.
-   *
-   * MDN
-   */
-  private[saferdom] def namespaceURI: String = js.native
-
-  /**
    * Is a DOMString representing the textual content of an element and all its
    * descendants.
    *
@@ -1054,16 +1058,6 @@ abstract class Node extends EventTarget {
    * MDN
    */
   private[saferdom] def firstChild: Node = js.native
-
-  // TODO: nullable var?
-  /**
-   * Is a DOMString representing the namespace prefix of the node, or null if no prefix is
-   * specified. Though the specification requires localName to be defined on the Node
-   * interface, Gecko-based browsers implement it on the Element interface.
-   *
-   * MDN
-   */
-  var prefix: String = js.native
 
   /**
    * Removes a child node from the current element, which must be a child of the current
