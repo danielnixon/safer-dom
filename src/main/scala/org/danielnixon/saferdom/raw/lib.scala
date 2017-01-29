@@ -5880,16 +5880,38 @@ class Attr extends js.Object {
   /**
    * The element holding the attribute.
    *
+   * Note: DOM Level 4 removed this property. The assumption was that since you get an Attr
+   * object from an Element, you should already know the associated element.
+   *
+   * As that doesn't hold true in cases like Attr objects being returned by Document.evaluate,
+   * the DOM Living Standard reintroduced the property.
+   *
    * MDN
    */
   private[saferdom] def ownerElement: Element = js.native
 
+  /**
+   * The attribute's value.
+   *
+   * MDN
+   */
   var value: String = js.native
 
+  /**
+   * The attribute's name.
+   *
+   * MDN
+   */
   def name: String = js.native
 
   private[saferdom] def namespaceURI: String = js.native
 
+  /**
+    * A DOMString representing the namespace prefix of the attribute, or null if no prefix
+    * is specified.
+    *
+    * MDN
+    */
   private[saferdom] def prefix: String = js.native
 
   def localName: String = js.native
