@@ -51,7 +51,10 @@ class CSSStyleDeclaration extends js.Object {
   var emptyCells: String = js.native
   var stopOpacity: String = js.native
   var paddingRight: String = js.native
-  var parentRule: CSSRule = js.native
+
+  // TODO: Read-only. Push upstream. https://drafts.csswg.org/cssom/#the-cssstyledeclaration-interface
+  private[saferdom] def parentRule: CSSRule = js.native
+
   var background: String = js.native
   var boxSizing: String = js.native
   var textJustify: String = js.native
@@ -237,33 +240,25 @@ class CSSStyleDeclaration extends js.Object {
  */
 @js.native
 class CSSStyleSheet extends StyleSheet {
-  var owningElement: Element = js.native
-  var imports: StyleSheetList = js.native
-  var isAlternate: Boolean = js.native
-  var isPrefAlternate: Boolean = js.native
-  var readOnly: Boolean = js.native
-  var cssText: String = js.native
+  // TODO: Lots of this needs to be deprecated upstream.
+  // See https://drafts.csswg.org/cssom/#cssstylesheet
+  // See https://www.w3.org/TR/DOM-Level-2-Style/css.html#CSS-CSSStyleSheet
 
+  // TODO: Read-only. Push upstream. https://drafts.csswg.org/cssom/#the-cssstylesheet-interface
   /**
    * If this style sheet is imported into the document using an `@import` rule, the
    * ownerRule property will return that CSSImportRule, otherwise it returns null.
    *
    * MDN
    */
-  var ownerRule: CSSRule = js.native
+  private[saferdom] def ownerRule: CSSRule = js.native
 
   /**
    * Returns a CSSRuleList of the CSS rules in the style sheet.
    *
    * MDN
    */
-  var cssRules: CSSRuleList = js.native
-  var id: String = js.native
-
-  def addImport(bstrURL: String, lIndex: Int = js.native): Int = js.native
-
-  def addPageRule(bstrSelector: String, bstrStyle: String,
-      lIndex: Int = js.native): Int = js.native
+  def cssRules: CSSRuleList = js.native
 
   /**
    * The CSSStyleSheet.insertRule() method inserts a new style rule into the current
@@ -273,19 +268,12 @@ class CSSStyleSheet extends StyleSheet {
    */
   def insertRule(rule: String, index: Int = js.native): Int = js.native
 
-  def removeRule(lIndex: Int): Unit = js.native
-
   /**
    * Deletes a rule from the style sheet.
    *
    * MDN
    */
   def deleteRule(index: Int = js.native): Unit = js.native
-
-  def addRule(bstrSelector: String, bstrStyle: String = js.native,
-      lIndex: Int = js.native): Int = js.native
-
-  def removeImport(lIndex: Int): Unit = js.native
 }
 
 /**
@@ -303,7 +291,14 @@ class CSSStyleRule extends CSSRule {
    * MDN
    */
   var selectorText: String = js.native
-  var readOnly: Boolean = js.native
+
+  // TODO: Push upstream. See https://drafts.csswg.org/cssom/#the-cssstylerule-interface
+  /**
+    * Returns the CSSStyleDeclaration object for the rule. Read only.
+    *
+    * MDN
+    */
+  def style: CSSStyleDeclaration = js.native
 }
 
 /**
@@ -316,17 +311,24 @@ class CSSStyleRule extends CSSRule {
 @js.native
 class CSSMediaRule extends CSSRule {
 
+  // TODO: Should be read-only. Push upstream. https://drafts.csswg.org/cssom/#the-cssmediarule-interface
   /**
    * Specifies a MediaList representing the intended destination medium for style
    * information.
    *
    * MDN
    */
-  var media: MediaList = js.native
-  var cssRules: CSSRuleList = js.native
+  def media: MediaList = js.native
 
+  // TODO: Everything below belongs on a CSSGroupingRule interface. https://drafts.csswg.org/cssom/#cssgroupingrule
+
+  // TODO: Should be read-only. Push upstream. https://drafts.csswg.org/cssom/#cssgroupingrule
+  def cssRules: CSSRuleList = js.native
+
+  // TODO: Should index have default value? https://drafts.csswg.org/cssom/#cssgroupingrule
   def insertRule(rule: String, index: Int = js.native): Int = js.native
 
+  // TODO: Should index have default value? https://drafts.csswg.org/cssom/#cssgroupingrule
   def deleteRule(index: Int = js.native): Unit = js.native
 }
 
@@ -340,27 +342,29 @@ class CSSMediaRule extends CSSRule {
 @js.native
 class CSSNamespaceRule extends CSSRule {
 
+  // TODO: both of these are read-only. Push upstream. https://drafts.csswg.org/cssom/#the-cssnamespacerule-interface
   /**
    * Returns a DOMString containing the text of the URI of the given namespace.
    *
    * MDN
    */
-  var namespaceURI: String = js.native
+  def namespaceURI: String = js.native
 
   /**
    * Returns a DOMString with the name of the prefix associated to this namespace. If
-   * there is no such prefix, returns  null.
+   * there is no such prefix, returns null.
    *
    * MDN
    */
-  var prefix: String = js.native
+  def prefix: String = js.native
 }
 
 @js.native
 class CSSImportRule extends CSSRule {
-  var styleSheet: CSSStyleSheet = js.native
-  var href: String = js.native
-  var media: MediaList = js.native
+  // TODO: All three of these are read-only. Push upstream. https://drafts.csswg.org/cssom/#the-cssimportrule-interface
+  def styleSheet: CSSStyleSheet = js.native
+  def href: String = js.native
+  def media: MediaList = js.native
 }
 
 /**
@@ -381,22 +385,27 @@ class CSSRule extends js.Object {
    */
   var cssText: String = js.native
 
+  // TODO: Read-only. Push upstream. https://drafts.csswg.org/cssom/#cssrule
   /**
    * parentStyleSheet returns the stylesheet object in which the current rule is
    * defined.
    *
    * MDN
    */
-  var parentStyleSheet: CSSStyleSheet = js.native
+  private[saferdom] def parentStyleSheet: CSSStyleSheet = js.native
 
+  // TODO: Read-only. Push upstream. https://drafts.csswg.org/cssom/#cssrule
   /**
    * Returns the containing rule, otherwise null. E.g. if this rule is a style rule
    * inside an `@media` block, the parent rule would be that CSSMediaRule.
    *
    * MDN
    */
-  var parentRule: CSSRule = js.native
-  var `type`: Int = js.native
+  private[saferdom] def parentRule: CSSRule = js.native
+
+  // TODO: Read-only. Push upstream. https://drafts.csswg.org/cssom/#cssrule
+  def `type`: Int = js.native
+
   var IMPORT_RULE: Int = js.native
   var MEDIA_RULE: Int = js.native
   var STYLE_RULE: Int = js.native
@@ -424,6 +433,7 @@ object CSSRule extends js.Object {
 
 @js.native
 class CSSFontFaceRule extends CSSRule {
+  // TODO: Read-only?
   var style: CSSStyleDeclaration = js.native
 }
 
@@ -435,6 +445,7 @@ class CSSFontFaceRule extends CSSRule {
  */
 @js.native
 class CSSPageRule extends CSSRule {
+  // TODO: Should this exist? https://drafts.csswg.org/cssom/#the-csspagerule-interface
   var pseudoClass: String = js.native
 
   /**
@@ -443,14 +454,17 @@ class CSSPageRule extends CSSRule {
    * MDN
    */
   var selectorText: String = js.native
+
+  // TODO: Should this exist? https://drafts.csswg.org/cssom/#the-csspagerule-interface
   var selector: String = js.native
 
+  // TODO: Read-only. Push upstream. https://drafts.csswg.org/cssom/#the-csspagerule-interface
   /**
    * Returns the declaration block associated with the at-rule.
    *
    * MDN
    */
-  var style: CSSStyleDeclaration = js.native
+  def style: CSSStyleDeclaration = js.native
 }
 
 /**
@@ -480,12 +494,13 @@ class CSSKeyframesRule extends CSSRule {
    */
   var name: String = js.native
 
+  // TODO: Read-only. Push upstream. https://drafts.csswg.org/css-animations/#interface-csskeyframesrule
   /**
    * Returns a CSSRuleList of the CSS rules in the media rule.
    *
    * MDN
    */
-  var cssRules: CSSRuleList = js.native
+  def cssRules: CSSRuleList = js.native
 
   /**
    * Returns a keyframe rule corresponding to the given key. The key is a DOMString
@@ -494,7 +509,7 @@ class CSSKeyframesRule extends CSSRule {
    *
    * MDN
    */
-  def findRule(rule: String): CSSKeyframeRule = js.native
+  private[saferdom] def findRule(rule: String): CSSKeyframeRule = js.native
 
   /**
    * Deletes a keyframe rule from the current CSSKeyframesRule. The parameter is the
@@ -535,10 +550,11 @@ class CSSKeyframeRule extends CSSRule {
    */
   var keyText: String = js.native
 
+  // TODO: Read-only. Push upstream. https://drafts.csswg.org/css-animations/#interface-csskeyframerule-idl
   /**
    * Returns a CSSStyleDeclaration of the CSS style associated with the keyfrom.
    *
    * MDN
    */
-  var style: CSSStyleDeclaration = js.native
+  def style: CSSStyleDeclaration = js.native
 }
