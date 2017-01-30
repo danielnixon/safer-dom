@@ -300,13 +300,16 @@ package object lib {
     def lookupNamespaceURI(prefix: String): Option[String] = Option(value.lookupNamespaceURI(prefix))
   }
 
+  /**
+    * @see https://w3c.github.io/uievents/#interface-mouseevent
+    */
   implicit class SaferMouseEvent(val value: org.danielnixon.saferdom.raw.MouseEvent) extends AnyVal {
     /**
       * The relatedTarget property is the secondary target for the event, if there is one.
       *
       * MDN
       */
-    private[saferdom] def relatedTarget: Option[EventTarget] = Option(value.relatedTarget)
+    def relatedTarget: Option[EventTarget] = Option(value.relatedTarget)
   }
 
   /**
@@ -359,6 +362,9 @@ package object lib {
     def previousNode(): Option[Node] = Option(value.previousNode())
   }
 
+  /**
+    * @see https://html.spec.whatwg.org/#the-window-object
+    */
   implicit class SaferWindow(val value: org.danielnixon.saferdom.raw.Window) extends AnyVal {
     /**
       * Returns the element (such as &lt;iframe&gt; or &lt;object&gt;) in which the window is embedded,
@@ -366,7 +372,7 @@ package object lib {
       *
       * MDN
       */
-    private[saferdom] def frameElement: Option[Element] = Option(value.frameElement)
+    def frameElement: Option[Element] = Option(value.frameElement)
   }
 
   /**
@@ -621,18 +627,18 @@ package object lib {
     * @see https://dom.spec.whatwg.org/#interface-namednodemap
     */
   implicit class SaferNamedNodeMap(val value: org.danielnixon.saferdom.raw.NamedNodeMap) extends AnyVal {
-    private[saferdom] def item(index: Int): Option[Attr] = Option(value.item(index))
+    def item(index: Int): Option[Attr] = Option(value.item(index))
 
-    private[saferdom] def apply(index: Int): Option[Attr] = Option(value.apply(index))
+    def apply(index: Int): Option[Attr] = Option(value.apply(index))
 
-    private[saferdom] def getNamedItem(name: String): Option[Attr] = Option(value.getNamedItem(name))
+    def getNamedItem(name: String): Option[Attr] = Option(value.getNamedItem(name))
 
-    private[saferdom] def setNamedItem(arg: Attr): Option[Attr] = Option(value.setNamedItem(arg))
+    def setNamedItem(arg: Attr): Option[Attr] = Option(value.setNamedItem(arg))
 
-    private[saferdom] def getNamedItemNS(namespaceURI: String, localName: String): Option[Attr] =
+    def getNamedItemNS(namespaceURI: String, localName: String): Option[Attr] =
       Option(value.getNamedItemNS(namespaceURI, localName))
 
-    private[saferdom] def setNamedItemNS(arg: Attr): Option[Attr] = Option(value.setNamedItemNS(arg))
+    def setNamedItemNS(arg: Attr): Option[Attr] = Option(value.setNamedItemNS(arg))
   }
 
   /**
@@ -747,7 +753,7 @@ package object lib {
       *
       * MDN
       */
-    private[saferdom] def sheet: Option[StyleSheet] = Option(value.sheet)
+    def sheet: Option[StyleSheet] = Option(value.sheet)
   }
 
   /**

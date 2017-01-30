@@ -3312,7 +3312,10 @@ abstract class HTMLElement extends Element {
   var onreset: js.Function1[Event, _] = js.native
   var onhelp: js.Function1[Event, _] = js.native
   var ondragleave: js.Function1[DragEvent, _] = js.native
+
+  // TODO: Move className to Element. See https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement
   var className: String = js.native
+
   var onfocusin: js.Function1[FocusEvent, _] = js.native
   var onseeked: js.Function1[Event, _] = js.native
   var recordNumber: js.Any = js.native

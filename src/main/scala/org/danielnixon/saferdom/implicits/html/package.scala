@@ -177,14 +177,14 @@ package object html {
       *
       * MDN
       */
-    private[saferdom] def contentWindow: Option[Window] = Option(value.contentWindow)
+    def contentWindow: Option[Window] = Option(value.contentWindow)
 
     /**
       * The active document in the inline frame's nested browsing context.
       *
       * MDN
       */
-    private[saferdom] def contentDocument: Option[Document] = Option(value.contentDocument)
+    def contentDocument: Option[Document] = Option(value.contentDocument)
   }
 
   /**
@@ -228,6 +228,9 @@ package object html {
     def form: Option[HTMLFormElement] = Option(value.form)
   }
 
+  /**
+    * @see https://html.spec.whatwg.org/multipage/embedded-content.html#htmlmediaelement
+    */
   implicit class SaferHTMLMediaElement(val value: org.danielnixon.saferdom.raw.HTMLMediaElement) extends AnyVal {
     /**
       * The MediaError object for the most recent error, or null if there has not been an
@@ -238,6 +241,9 @@ package object html {
     def error: Option[MediaError] = Option(value.error)
   }
 
+  /**
+    * @see https://html.spec.whatwg.org/multipage/forms.html#the-fieldset-element
+    */
   implicit class SaferHTMLFieldSetElement(val value: org.danielnixon.saferdom.raw.HTMLFieldSetElement) extends AnyVal {
     /**
       * The containing form element, if this element is in a form. If the button is not a
