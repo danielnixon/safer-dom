@@ -18,6 +18,8 @@ normalizedName := "safer-dom"
 
 commonSettings
 
+libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.1"
+
 homepage := Some(url("https://github.com/danielnixon/safer-dom"))
 
 licenses += ("MIT", url("http://opensource.org/licenses/mit-license.php"))
@@ -37,7 +39,7 @@ publishTo := {
     Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
 
-pomExtra := (
+pomExtra := {
     <developers>
       <developer>
         <id>danielnixon</id>
@@ -45,7 +47,7 @@ pomExtra := (
         <url>https://danielnixon.org/</url>
       </developer>
     </developers>
-)
+}
 
 pomIncludeRepository := { _ => false }
 
