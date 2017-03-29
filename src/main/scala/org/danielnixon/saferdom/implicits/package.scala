@@ -3,7 +3,7 @@ package org.danielnixon.saferdom
 import org.danielnixon.saferdom.implicits.css._
 import org.danielnixon.saferdom.implicits.html._
 import org.danielnixon.saferdom.implicits.lib._
-import org.danielnixon.saferdom.raw._
+import org.scalajs.dom.raw._
 
 import scala.language.implicitConversions
 

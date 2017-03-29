@@ -1,6 +1,6 @@
 package org.danielnixon.saferdom.implicits
 
-import org.danielnixon.saferdom.raw._
+import org.scalajs.dom.raw._
 
 package object css {
 
@@ -8,7 +8,7 @@ package object css {
     * @see https://drafts.csswg.org/cssom/#the-cssstyledeclaration-interface
     */
   implicit class SaferCSSStyleDeclaration(val value: CSSStyleDeclaration) extends AnyVal {
-    def parentRule: Option[CSSRule] = Option(value.parentRule)
+    def parentRuleOpt: Option[CSSRule] = Option(value.parentRule)
   }
 
   /**
@@ -21,7 +21,7 @@ package object css {
       *
       * MDN
       */
-    def ownerRule: Option[CSSRule] = Option(value.ownerRule)
+    def ownerRuleOpt: Option[CSSRule] = Option(value.ownerRule)
   }
 
   /**
@@ -34,7 +34,7 @@ package object css {
       *
       * MDN
       */
-    def parentStyleSheet: Option[CSSStyleSheet] = Option(value.parentStyleSheet)
+    def parentStyleSheetOpt: Option[CSSStyleSheet] = Option(value.parentStyleSheet)
 
     /**
       * Returns the containing rule, otherwise null. E.g. if this rule is a style rule
@@ -42,7 +42,7 @@ package object css {
       *
       * MDN
       */
-    def parentRule: Option[CSSRule] = Option(value.parentRule)
+    def parentRuleOpt: Option[CSSRule] = Option(value.parentRule)
   }
 
   /**
@@ -56,6 +56,6 @@ package object css {
       *
       * MDN
       */
-    def findRule(rule: String): Option[CSSKeyframeRule] = Option(value.findRule(rule))
+    def findRuleOpt(rule: String): Option[CSSKeyframeRule] = Option(value.findRule(rule))
   }
 }

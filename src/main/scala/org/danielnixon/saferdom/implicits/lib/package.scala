@@ -1,51 +1,53 @@
 package org.danielnixon.saferdom.implicits
 
-import org.danielnixon.saferdom.raw._
+import org.scalajs.dom.raw._
+
+import scala.scalajs.js
 
 package object lib {
 
   /**
     * @see https://dom.spec.whatwg.org/#interface-parentnode
     */
-  implicit class SaferParentNode(val value: org.danielnixon.saferdom.raw.ParentNode) extends AnyVal {
+  implicit class SaferParentNode(val value: ParentNode) extends AnyVal {
     /**
       * Returns the Element that is the first child of the object, or null if there is none.
       *
       * MDN
       */
-    def firstElementChild: Option[Element] = Option(value.firstElementChild)
+    def firstElementChildOpt: Option[Element] = Option(value.firstElementChild)
 
     /**
       * Returns the Element that is the last child of the object, or null if there is none.
       *
       * MDN
       */
-    def lastElementChild: Option[Element] = Option(value.lastElementChild)
+    def lastElementChildOpt: Option[Element] = Option(value.lastElementChild)
   }
 
   /**
     * @see https://www.w3.org/TR/DOM-Level-3-XPath/xpath.html#XPathResult
     * @see https://wiki.whatwg.org/wiki/DOM_XPath
     */
-  implicit class SaferXPathResult(val value: org.danielnixon.saferdom.raw.XPathResult) extends AnyVal {
-    def singleNodeValue: Option[Node] = Option(value.singleNodeValue)
+  implicit class SaferXPathResult(val value: XPathResult) extends AnyVal {
+    def singleNodeValueOpt: Option[Node] = Option(value.singleNodeValue)
 
-    def iterateNext(): Option[Node] = Option(value.iterateNext())
+    def iterateNextOpt(): Option[Node] = Option(value.iterateNext())
 
-    def snapshotItem(index: Int): Option[Node] = Option(value.snapshotItem(index))
+    def snapshotItemOpt(index: Int): Option[Node] = Option(value.snapshotItem(index))
   }
 
   /**
     * @see https://dom.spec.whatwg.org/#treewalker
     */
-  implicit class SaferTreeWalker(val value: org.danielnixon.saferdom.raw.TreeWalker) extends AnyVal {
+  implicit class SaferTreeWalker(val value: TreeWalker) extends AnyVal {
     /**
       * The TreeWalker.filter read-only property returns a NodeFilter that is the
       * filtering object associated with the TreeWalker.
       *
       * MDN
       */
-    def filter: Option[NodeFilter] = Option(value.filter)
+    def filterOpt: Option[NodeFilter] = Option(value.filter)
 
     /**
       * The TreeWalker.previousSibling() method moves the current Node to its previous
@@ -54,7 +56,7 @@ package object lib {
       *
       * MDN
       */
-    def previousSibling(): Option[Node] = Option(value.previousSibling())
+    def previousSiblingOpt(): Option[Node] = Option(value.previousSibling())
 
     /**
       * The TreeWalker.lastChild() method moves the current Node to the last visible
@@ -64,7 +66,7 @@ package object lib {
       *
       * MDN
       */
-    def lastChild(): Option[Node] = Option(value.lastChild())
+    def lastChildOpt(): Option[Node] = Option(value.lastChild())
 
     /**
       * The TreeWalker.nextSibling() method moves the current Node to its next sibling,
@@ -73,7 +75,7 @@ package object lib {
       *
       * MDN
       */
-    def nextSibling(): Option[Node] = Option(value.nextSibling())
+    def nextSiblingOpt(): Option[Node] = Option(value.nextSibling())
 
     /**
       * The TreeWalker.nextNode() method moves the current Node to the next visible node
@@ -82,7 +84,7 @@ package object lib {
       *
       * MDN
       */
-    def nextNode(): Option[Node] = Option(value.nextNode())
+    def nextNodeOpt(): Option[Node] = Option(value.nextNode())
 
     /**
       * The TreeWalker.parentNode() method moves the current Node to the first visible
@@ -93,7 +95,7 @@ package object lib {
       *
       * MDN
       */
-    def parentNode(): Option[Node] = Option(value.parentNode())
+    def parentNodeOpt(): Option[Node] = Option(value.parentNode())
 
     /**
       * The TreeWalker.firstChild() method moves the current Node to the first visible
@@ -103,7 +105,7 @@ package object lib {
       *
       * MDN
       */
-    def firstChild(): Option[Node] = Option(value.firstChild())
+    def firstChildOpt(): Option[Node] = Option(value.firstChild())
 
     /**
       * The TreeWalker.previousNode() method moves the current Node to the previous
@@ -114,13 +116,13 @@ package object lib {
       *
       * MDN
       */
-    def previousNode(): Option[Node] = Option(value.previousNode())
+    def previousNodeOpt(): Option[Node] = Option(value.previousNode())
   }
 
   /**
     * @see https://dom.spec.whatwg.org/#nondocumenttypechildnode
     */
-  implicit class SaferNonDocumentTypeChildNode(val value: org.danielnixon.saferdom.raw.NonDocumentTypeChildNode) extends AnyVal {
+  implicit class SaferNonDocumentTypeChildNode(val value: NonDocumentTypeChildNode) extends AnyVal {
     /**
       * The previousElementSibling read-only property returns the Element immediately prior
       * to the specified one in its parent's children list, or null if the specified element
@@ -128,7 +130,7 @@ package object lib {
       *
       * MDN
       */
-    def previousElementSibling: Option[Element] = Option(value.previousElementSibling)
+    def previousElementSiblingOpt: Option[Element] = Option(value.previousElementSibling)
 
     /**
       * The nextElementSibling read-only property returns the element immediately following
@@ -137,20 +139,20 @@ package object lib {
       *
       * MDN
       */
-    def nextElementSibling: Option[Element] = Option(value.nextElementSibling)
+    def nextElementSiblingOpt: Option[Element] = Option(value.nextElementSibling)
   }
 
   /**
     * @see https://dom.spec.whatwg.org/#interface-element
     */
-  implicit class SaferElement(val value: org.danielnixon.saferdom.raw.Element) extends AnyVal {
+  implicit class SaferElement(val value: Element) extends AnyVal {
 
     /**
       * The namespace URI of the element, or null if it is no namespace.
       *
       * MDN
       */
-    def namespaceURI: Option[String] = Option(value.namespaceURI)
+    def namespaceURIOpt: Option[String] = Option(value.namespaceURI)
 
     /**
       * A DOMString representing the namespace prefix of the element, or null if no
@@ -158,7 +160,7 @@ package object lib {
       *
       * MDN
       */
-    def prefix: Option[String] = Option(value.prefix)
+    def prefixOpt: Option[String] = Option(value.prefix)
 
     /**
       * getAttribute() returns the value of the named attribute on the specified element.
@@ -167,7 +169,7 @@ package object lib {
       *
       * MDN
       */
-    def getAttribute(name: String): Option[String] = Option(value.getAttribute(name))
+    def getAttributeOpt(name: String): Option[String] = Option(value.getAttribute(name))
 
     /**
       * getAttributeNS returns the string value of the attribute with the specified
@@ -176,7 +178,7 @@ package object lib {
       *
       * MDN
       */
-    def getAttributeNS(namespaceURI: String, localName: String): Option[String] =
+    def getAttributeNSOpt(namespaceURI: String, localName: String): Option[String] =
       Option(value.getAttributeNS(namespaceURI, localName))
 
     /**
@@ -184,7 +186,7 @@ package object lib {
       *
       * MDN
       */
-    def getAttributeNodeNS(namespaceURI: String, localName: String): Option[Attr] =
+    def getAttributeNodeNSOpt(namespaceURI: String, localName: String): Option[Attr] =
       Option(value.getAttributeNodeNS(namespaceURI, localName))
 
     /**
@@ -192,27 +194,27 @@ package object lib {
       *
       * MDN
       */
-    def setAttributeNodeNS(newAttr: Attr): Option[Attr] = Option(value.setAttributeNodeNS(newAttr))
+    def setAttributeNodeNSOpt(newAttr: Attr): Option[Attr] = Option(value.setAttributeNodeNS(newAttr))
 
     /**
       * Returns the specified attribute of the specified element, as an Attr node.
       *
       * MDN
       */
-    def getAttributeNode(name: String): Option[Attr] = Option(value.getAttributeNode(name))
+    def getAttributeNodeOpt(name: String): Option[Attr] = Option(value.getAttributeNode(name))
 
     /**
       * setAttributeNode() adds a new Attr node to the specified element.
       *
       * MDN
       */
-    def setAttributeNode(newAttr: Attr): Option[Attr] = Option(value.setAttributeNode(newAttr))
+    def setAttributeNodeOpt(newAttr: Attr): Option[Attr] = Option(value.setAttributeNode(newAttr))
   }
 
   /**
     * @see https://dom.spec.whatwg.org/#interface-node
     */
-  implicit class SaferNode(val value: org.danielnixon.saferdom.raw.Node) extends AnyVal {
+  implicit class SaferNode(val value: Node) extends AnyVal {
 
     /**
       * Returns the node immediately preceding the specified one in its parent's
@@ -220,7 +222,7 @@ package object lib {
       *
       * MDN
       */
-    def previousSibling: Option[Node] = Option(value.previousSibling)
+    def previousSiblingOpt: Option[Node] = Option(value.previousSibling)
 
     /**
       * Returns a Node that is the parent of this node. If there is no such node, like if this
@@ -229,15 +231,7 @@ package object lib {
       *
       * MDN
       */
-    def parentNode: Option[Node] = Option(value.parentNode)
-
-    /**
-      * Returns an Element that is the parent of this node. If the node has no parent, or if
-      * that parent is not an Element, this property returns null.
-      *
-      * MDN
-      */
-    def parentElement: Option[Element] = Option(value.parentElement)
+    def parentNodeOpt: Option[Node] = Option(value.parentNode)
 
     /**
       * Returns the node immediately following the specified one in its parent's
@@ -245,7 +239,7 @@ package object lib {
       *
       * MDN
       */
-    def nextSibling: Option[Node] = Option(value.nextSibling)
+    def nextSiblingOpt: Option[Node] = Option(value.nextSibling)
 
     /**
       * Is a DOMString representing the value of an object. For most Node type, this returns
@@ -256,7 +250,7 @@ package object lib {
       *
       * MDN
       */
-    def nodeValue: Option[String] = Option(value.nodeValue)
+    def nodeValueOpt: Option[String] = Option(value.nodeValue)
 
     /**
       * Returns a Node representing the last direct child node of the node, or null if the
@@ -264,7 +258,7 @@ package object lib {
       *
       * MDN
       */
-    def lastChild: Option[Node] = Option(value.lastChild)
+    def lastChildOpt: Option[Node] = Option(value.lastChild)
 
     /**
       * Returns the Document that this node belongs to. If no document is associated with
@@ -272,7 +266,7 @@ package object lib {
       *
       * MDN
       */
-    def ownerDocument: Option[Document] = Option(value.ownerDocument)
+    def ownerDocumentOpt: Option[Document] = Option(value.ownerDocument)
 
     /**
       * Returns the node's first child in the tree, or null if the node is childless. If the
@@ -280,7 +274,7 @@ package object lib {
       *
       * MDN
       */
-    def firstChild: Option[Node] = Option(value.firstChild)
+    def firstChildOpt: Option[Node] = Option(value.firstChild)
 
     /**
       * Returns the prefix for a given namespaceURI if present, and null if not. When
@@ -288,7 +282,7 @@ package object lib {
       *
       * MDN
       */
-    def lookupPrefix(namespaceURI: String): Option[String] = Option(value.lookupPrefix(namespaceURI))
+    def lookupPrefixOpt(namespaceURI: String): Option[String] = Option(value.lookupPrefix(namespaceURI))
 
     /**
       * Takes a prefix and returns the namespaceURI associated with it on the given node if
@@ -297,51 +291,51 @@ package object lib {
       *
       * MDN
       */
-    def lookupNamespaceURI(prefix: String): Option[String] = Option(value.lookupNamespaceURI(prefix))
+    def lookupNamespaceURIOpt(prefix: String): Option[String] = Option(value.lookupNamespaceURI(prefix))
   }
 
   /**
     * @see https://w3c.github.io/uievents/#interface-mouseevent
     */
-  implicit class SaferMouseEvent(val value: org.danielnixon.saferdom.raw.MouseEvent) extends AnyVal {
+  implicit class SaferMouseEvent(val value: MouseEvent) extends AnyVal {
     /**
       * The relatedTarget property is the secondary target for the event, if there is one.
       *
       * MDN
       */
-    def relatedTarget: Option[EventTarget] = Option(value.relatedTarget)
+    def relatedTargetOpt: Option[EventTarget] = Option(value.relatedTarget)
   }
 
   /**
     * @see https://w3c.github.io/selection-api/#selection-interface
     */
-  implicit class SaferSelection(val value: org.danielnixon.saferdom.raw.Selection) extends AnyVal {
+  implicit class SaferSelection(val value: Selection) extends AnyVal {
     /**
       * Returns the node in which the selection begins.
       *
       * MDN
       */
-    def anchorNode: Option[Node] = Option(value.anchorNode)
+    def anchorNodeOpt: Option[Node] = Option(value.anchorNode)
 
     /**
       * Returns the node in which the selection ends.
       *
       * MDN
       */
-    def focusNode: Option[Node] = Option(value.focusNode)
+    def focusNodeOpt: Option[Node] = Option(value.focusNode)
   }
 
   /**
     * @see https://dom.spec.whatwg.org/#nodeiterator
     */
-  implicit class SaferNodeIterator(val value: org.danielnixon.saferdom.raw.NodeIterator) extends AnyVal {
+  implicit class SaferNodeIterator(val value: NodeIterator) extends AnyVal {
     /**
       * The NodeIterator.filter read-only method returns a NodeFilter object, that is an
       * object implement an acceptNode(node) method, used to screen nodes.
       *
       * MDN
       */
-    def filter: Option[NodeFilter] = Option(value.filter)
+    def filterOpt: Option[NodeFilter] = Option(value.filter)
 
     /**
       * The NodeIterator.nextNode() method returns the next node in the set represented
@@ -350,7 +344,7 @@ package object lib {
       *
       * MDN
       */
-    def nextNode(): Option[Node] = Option(value.nextNode())
+    def nextNodeOpt(): Option[Node] = Option(value.nextNode())
 
     /**
       * The NodeIterator.previousNode() method returns the previous node in the set
@@ -359,26 +353,26 @@ package object lib {
       *
       * MDN
       */
-    def previousNode(): Option[Node] = Option(value.previousNode())
+    def previousNodeOpt(): Option[Node] = Option(value.previousNode())
   }
 
   /**
     * @see https://html.spec.whatwg.org/#the-window-object
     */
-  implicit class SaferWindow(val value: org.danielnixon.saferdom.raw.Window) extends AnyVal {
+  implicit class SaferWindow(val value: Window) extends AnyVal {
     /**
       * Returns the element (such as &lt;iframe&gt; or &lt;object&gt;) in which the window is embedded,
       * or null if the window is top-level.
       *
       * MDN
       */
-    def frameElement: Option[Element] = Option(value.frameElement)
+    def frameElementOpt: Option[Element] = Option(value.frameElement)
   }
 
   /**
     * @see https://dom.spec.whatwg.org/#interface-document
     */
-  implicit class SaferDocument(val value: org.danielnixon.saferdom.raw.Document) extends AnyVal {
+  implicit class SaferDocument(val value: Document) extends AnyVal {
     /**
       * Returns the Document Type Declaration (DTD) associated with current document.
       * The returned object implements the DocumentType interface. Use
@@ -386,7 +380,7 @@ package object lib {
       *
       * MDN
       */
-    def doctype: Option[DocumentType] = Option(value.doctype)
+    def doctypeOpt: Option[DocumentType] = Option(value.doctype)
 
     /**
       * Returns the Element that is the root element of the document (for example, the
@@ -394,20 +388,20 @@ package object lib {
       *
       * MDN
       */
-    def documentElement: Option[Element] = Option(value.documentElement)
+    def documentElementOpt: Option[Element] = Option(value.documentElement)
 
     /**
       * Returns an object reference to the identified element.
       *
       * MDN
       */
-    def getElementById(elementId: String): Option[Element] = Option(value.getElementById(elementId))
+    def getElementByIdOpt(elementId: String): Option[Element] = Option(value.getElementById(elementId))
   }
 
   /**
     * @see https://www.w3.org/TR/selectors-api/#interface-definitions
     */
-  implicit class SaferNodeSelector(val value: org.danielnixon.saferdom.raw.NodeSelector) extends AnyVal {
+  implicit class SaferNodeSelector(val value: NodeSelector) extends AnyVal {
 
     /**
       * Returns the first element within the document (using depth-first pre-order
@@ -416,13 +410,13 @@ package object lib {
       *
       * MDN
       */
-    def querySelector(selectors: String): Option[Element] = Option(value.querySelector(selectors))
+    def querySelectorOpt(selectors: String): Option[Element] = Option(value.querySelector(selectors))
   }
 
   /**
     * @see https://xhr.spec.whatwg.org/#interface-xmlhttprequest
     */
-  implicit class SaferXMLHttpRequest(val value: org.danielnixon.saferdom.raw.XMLHttpRequest) extends AnyVal {
+  implicit class SaferXMLHttpRequest(val value: XMLHttpRequest) extends AnyVal {
     /**
       * The response to the request as a DOM Document object, or null if the request was
       * unsuccessful, has not yet been sent, or cannot be parsed as XML or HTML. The response
@@ -433,7 +427,7 @@ package object lib {
       *
       * MDN
       */
-    def responseXML: Option[Document] = Option(value.responseXML)
+    def responseXMLOpt: Option[Document] = Option(value.responseXML)
 
     /**
       * Returns the string containing the text of the specified header, or null if
@@ -442,7 +436,7 @@ package object lib {
       *
       * MDN
       */
-    def getResponseHeader(header: String): Option[String] = Option(value.getResponseHeader(header))
+    def getResponseHeaderOpt(header: String): Option[String] = Option(value.getResponseHeader(header))
 
     /**
       * The response entity body according to responseType, as an ArrayBuffer, Blob,
@@ -451,13 +445,13 @@ package object lib {
       *
       * MDN
       */
-    def response: Option[scalajs.js.Any] = Option(value.response)
+    def responseOpt: Option[scalajs.js.Any] = Option(value.response)
   }
 
   /**
     * @see https://dev.w3.org/geo/api/spec-source.html#coordinates
     */
-  implicit class SaferCoordinates(val value: org.danielnixon.saferdom.raw.Coordinates) extends AnyVal {
+  implicit class SaferCoordinates(val value: Coordinates) extends AnyVal {
 
     /**
       * The Coordinates.altitudeAccuracy read-only property is a strictly positive
@@ -467,7 +461,7 @@ package object lib {
       *
       * MDN
       */
-    def altitudeAccuracy: Option[Double] = Option(value.altitudeAccuracy)
+    def altitudeAccuracyOpt: Option[Double] = Option(value.altitudeAccuracy)
 
     /**
       * The Coordinates.speed read-only property is a double representing the velocity
@@ -476,7 +470,7 @@ package object lib {
       *
       * MDN
       */
-    def speed: Option[Double] = Option(value.speed)
+    def speedOpt: Option[Double] = Option(value.speed)
 
     /**
       * The Coordinates.heading read-only property is a double representing the
@@ -488,7 +482,7 @@ package object lib {
       *
       * MDN
       */
-    def heading: Option[Double] = Option(value.heading)
+    def headingOpt: Option[Double] = Option(value.heading)
 
     /**
       * The Coordinates.altitude read-only property is a double representing the
@@ -497,26 +491,26 @@ package object lib {
       *
       * MDN
       */
-    def altitude: Option[Double] = Option(value.altitude)
+    def altitudeOpt: Option[Double] = Option(value.altitude)
   }
 
   /**
     * @see https://w3c.github.io/clipboard-apis/#clipboard-event-interfaces
     */
-  implicit class SaferClipboardEvent(val value: org.danielnixon.saferdom.raw.ClipboardEvent) extends AnyVal {
+  implicit class SaferClipboardEvent(val value: ClipboardEvent) extends AnyVal {
     /**
       * Is a DataTransfer object containing the data affected by the user-initialed cut, copy,
       * or paste operation, along with its MIME type.
       *
       * MDN
       */
-    def clipboardData: Option[DataTransfer] = Option(value.clipboardData)
+    def clipboardDataOpt: Option[DataTransfer] = Option(value.clipboardData)
   }
 
   /**
     * @see https://w3c.github.io/uievents/#interface-focusevent
     */
-  implicit class SaferFocusEvent(val value: org.danielnixon.saferdom.raw.FocusEvent) extends AnyVal {
+  implicit class SaferFocusEvent(val value: FocusEvent) extends AnyVal {
     /**
       * The FocusEvent.relatedTarget read-only property represents a secondary target
       * for this event, which will depend of the event itself. As in some cases (like when
@@ -524,50 +518,50 @@ package object lib {
       *
       * MDN
       */
-    def relatedTarget: Option[EventTarget] = Option(value.relatedTarget)
+    def relatedTargetOpt: Option[EventTarget] = Option(value.relatedTarget)
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/webstorage.html#the-storage-interface
     */
-  implicit class SaferStorage(val value: org.danielnixon.saferdom.raw.Storage) extends AnyVal {
-    def getItem(key: String): Option[String] = Option(value.getItem(key))
+  implicit class SaferStorage(val value: Storage) extends AnyVal {
+    def getItemOpt(key: String): Option[String] = Option(value.getItem(key))
 
-    def key(index: Int): Option[String] = Option(value.key(index))
+    def keyOpt(index: Int): Option[String] = Option(value.key(index))
   }
 
   /**
     * @see https://dom.spec.whatwg.org/#mutationrecord
     * @see https://www.w3.org/TR/dom/#mutationrecord
     */
-  implicit class SaferMutationRecord(val value: org.danielnixon.saferdom.raw.MutationRecord) extends AnyVal {
+  implicit class SaferMutationRecord(val value: MutationRecord) extends AnyVal {
     /**
       * Return the previous sibling of the added or removed nodes, or null.
       *
       * MDN
       */
-    def previousSibling: Option[Node] = Option(value.previousSibling)
+    def previousSiblingOpt: Option[Node] = Option(value.previousSibling)
 
     /**
       * Return the next sibling of the added or removed nodes, or null.
       *
       * MDN
       */
-    def nextSibling: Option[Node] = Option(value.nextSibling)
+    def nextSiblingOpt: Option[Node] = Option(value.nextSibling)
 
     /**
       * Returns the local name of the changed attribute, or null.
       *
       * MDN
       */
-    def attributeName: Option[String] = Option(value.attributeName)
+    def attributeNameOpt: Option[String] = Option(value.attributeName)
 
     /**
       * Returns the namespace of the changed attribute, or null.
       *
       * MDN
       */
-    def attributeNamespace: Option[String] = Option(value.attributeNamespace)
+    def attributeNamespaceOpt: Option[String] = Option(value.attributeNamespace)
 
     /**
       * The return value depends on the type. For attributes, it is the value of
@@ -576,22 +570,22 @@ package object lib {
       *
       * MDN
       */
-    def oldValue: Option[String] = Option(value.oldValue)
+    def oldValueOpt: Option[String] = Option(value.oldValue)
   }
 
   /**
     * @see https://w3c.github.io/html/editing.html#the-dragevent-interface
     * @see https://html.spec.whatwg.org/multipage/interaction.html#the-dragevent-interface
     */
-  implicit class SaferDragEvent(val value: org.danielnixon.saferdom.raw.DragEvent) extends AnyVal {
-    def dataTransfer: Option[DataTransfer] = Option(value.dataTransfer)
+  implicit class SaferDragEvent(val value: DragEvent) extends AnyVal {
+    def dataTransferOpt: Option[DataTransfer] = Option(value.dataTransfer)
   }
 
   /**
     * @see https://w3c.github.io/html/webappapis.html#language-preferences
     * @see https://html.spec.whatwg.org/multipage/webappapis.html#navigatorlanguage
     */
-  implicit class SaferNavigatorLanguage(val value: org.danielnixon.saferdom.raw.NavigatorLanguage) extends AnyVal {
+  implicit class SaferNavigatorLanguage(val value: NavigatorLanguage) extends AnyVal {
     /**
       * Returns a DOMString representing the preferred language of the user,
       * usually the language of the browser UI. The null value is returned when
@@ -599,100 +593,101 @@ package object lib {
       *
       * MDN
       */
-    def language: Option[String] = Option(value.language)
+    def languageOpt: Option[String] = Option(value.language)
   }
 
   /**
     * @see https://w3c.github.io/uievents/#interface-uievent
     */
-  implicit class SaferUIEvent(val value: org.danielnixon.saferdom.raw.UIEvent) extends AnyVal {
+  implicit class SaferUIEvent(val value: UIEvent) extends AnyVal {
     /**
       * A view which generated the event. Read only.
       *
       * MDN
       */
-    def view: Option[Window] = Option(value.view)
+    def viewOpt: Option[Window] = Option(value.view)
   }
 
   /**
     * @see https://drafts.csswg.org/cssom/#the-stylesheetlist-interface
     */
-  implicit class SaferStyleSheetList(val value: org.danielnixon.saferdom.raw.StyleSheetList) extends AnyVal {
-    def item(index: Int): Option[StyleSheet] = Option(value.item(index))
+  implicit class SaferStyleSheetList(val value: StyleSheetList) extends AnyVal {
+    def itemOpt(index: Int): Option[StyleSheet] = Option(value.item(index))
 
-    def apply(index: Int): Option[StyleSheet] = Option(value.apply(index))
+    def applyOpt(index: Int): Option[StyleSheet] = Option(value.apply(index))
   }
 
   /**
     * @see https://dom.spec.whatwg.org/#interface-namednodemap
     */
-  implicit class SaferNamedNodeMap(val value: org.danielnixon.saferdom.raw.NamedNodeMap) extends AnyVal {
-    def item(index: Int): Option[Attr] = Option(value.item(index))
+  implicit class SaferNamedNodeMap(val value: NamedNodeMap) extends AnyVal {
+    def itemOpt(index: Int): Option[Attr] = Option(value.item(index))
 
-    def apply(index: Int): Option[Attr] = Option(value.apply(index))
+    def applyOpt(index: Int): Option[Attr] = Option(value.apply(index))
 
-    def getNamedItem(name: String): Option[Attr] = Option(value.getNamedItem(name))
+    def getNamedItemOpt(name: String): Option[Attr] = Option(value.getNamedItem(name))
 
-    def setNamedItem(arg: Attr): Option[Attr] = Option(value.setNamedItem(arg))
+    def setNamedItemOpt(arg: Attr): Option[Attr] = Option(value.setNamedItem(arg))
 
-    def getNamedItemNS(namespaceURI: String, localName: String): Option[Attr] =
+    def getNamedItemNSOpt(namespaceURI: String, localName: String): Option[Attr] =
       Option(value.getNamedItemNS(namespaceURI, localName))
 
-    def setNamedItemNS(arg: Attr): Option[Attr] = Option(value.setNamedItemNS(arg))
+    def setNamedItemNSOpt(arg: Attr): Option[Attr] = Option(value.setNamedItemNS(arg))
   }
 
   /**
     * @see https://drafts.csswg.org/cssom/#medialist
     */
-  implicit class SaferMediaList(val value: org.danielnixon.saferdom.raw.MediaList) extends AnyVal {
-    def item(index: Int): Option[String] = Option(value.item(index))
+  implicit class SaferMediaList(val value: MediaList) extends AnyVal {
+    def itemOpt(index: Int): Option[String] = Option(value.item(index))
 
-    def apply(index: Int): Option[String] = Option(value.apply(index))
+    def applyOpt(index: Int): Option[String] = Option(value.apply(index))
   }
 
   /**
     * @see https://drafts.csswg.org/cssom/#stylesheet
     */
-  implicit class SaferStyleSheet(val value: org.danielnixon.saferdom.raw.StyleSheet) extends AnyVal {
+  implicit class SaferStyleSheet(val value: StyleSheet) extends AnyVal {
+    // TODO: StyleSheet#href needs to be defined.
     /**
       * Returns a DOMString representing the location of the stylesheet.
       *
       * MDN
       */
-    def href: Option[String] = Option(value.href)
+    def hrefOpt: Option[String] = Option(value.asInstanceOf[js.Dynamic].href.asInstanceOf[String])
 
     /**
       * ownerNode returns the node that associates this style sheet with the document.
       *
       * MDN
       */
-    def ownerNode: Option[Node] = Option(value.ownerNode)
+    def ownerNodeOpt: Option[Node] = Option(value.ownerNode)
 
     /**
       * Returns a StyleSheet including this one, if any; returns null if there aren't any.
       *
       * MDN
       */
-    def parentStyleSheet: Option[StyleSheet] = Option(value.parentStyleSheet)
+    def parentStyleSheetOpt: Option[StyleSheet] = Option(value.parentStyleSheet)
 
     /**
       * Returns a DOMString representing the advisory title of the current style sheet.
       *
       * MDN
       */
-    def title: Option[String] = Option(value.title)
+    def titleOpt: Option[String] = Option(value.title)
   }
 
-  implicit class SaferDOMList[T](val value: org.danielnixon.saferdom.raw.DOMList[T]) extends AnyVal {
-    def apply(index: Int): Option[T] = Option(value.apply(index))
+  implicit class SaferDOMList[T](val value: DOMList[T]) extends AnyVal {
+    def applyOpt(index: Int): Option[T] = Option(value.apply(index))
 
-    def item(index: Int): Option[T] = Option(value.item(index))
+    def itemOpt(index: Int): Option[T] = Option(value.item(index))
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/webstorage.html#the-storageevent-interface
     */
-  implicit class SaferStorageEvent(val value: org.danielnixon.saferdom.raw.StorageEvent) extends AnyVal {
+  implicit class SaferStorageEvent(val value: StorageEvent) extends AnyVal {
     /**
       * The original value of the key. The oldValue is null when the change has been invoked
       * by storage clear() method or the key has been newly added and therefor doesn't have
@@ -700,7 +695,7 @@ package object lib {
       *
       * MDN
       */
-    def oldValue: Option[scalajs.js.Any] = Option(value.oldValue)
+    def oldValueOpt: Option[scalajs.js.Any] = Option(value.oldValue)
 
     /**
       * The new value of the key. The newValue is null when the change has been invoked by
@@ -708,14 +703,14 @@ package object lib {
       *
       * MDN
       */
-    def newValue: Option[scalajs.js.Any] = Option(value.newValue)
+    def newValueOpt: Option[scalajs.js.Any] = Option(value.newValue)
 
     /**
       * Represents the Storage object that was affected. Read only.
       *
       * MDN
       */
-    def storageArea: Option[Storage] = Option(value.storageArea)
+    def storageAreaOpt: Option[Storage] = Option(value.storageArea)
 
     /**
       * Represents the key changed. The key attribute is null when the change is caused by
@@ -723,29 +718,29 @@ package object lib {
       *
       * MDN
       */
-    def key: Option[String] = Option(value.key)
+    def keyOpt: Option[String] = Option(value.key)
   }
 
   /**
     * @see https://dom.spec.whatwg.org/#interface-attr
     */
-  implicit class SaferAttr(val value: org.danielnixon.saferdom.raw.Attr) extends AnyVal {
+  implicit class SaferAttr(val value: Attr) extends AnyVal {
     /**
       * The element holding the attribute.
       *
       * MDN
       */
-    def ownerElement: Option[Element] = Option(value.ownerElement)
+    def ownerElementOpt: Option[Element] = Option(value.ownerElement)
 
-    def namespaceURI: Option[String] = Option(value.namespaceURI)
+    def namespaceURIOpt: Option[String] = Option(value.namespaceURI)
 
-    def prefix: Option[String] = Option(value.prefix)
+    def prefixOpt: Option[String] = Option(value.prefix)
   }
 
   /**
     * @see https://drafts.csswg.org/cssom/#the-linkstyle-interface
     */
-  implicit class SaferLinkStyle(val value: org.danielnixon.saferdom.raw.LinkStyle) extends AnyVal {
+  implicit class SaferLinkStyle(val value: LinkStyle) extends AnyVal {
 
     /**
       * Returns the StyleSheet object associated with the given element, or null if there
@@ -753,33 +748,33 @@ package object lib {
       *
       * MDN
       */
-    def sheet: Option[StyleSheet] = Option(value.sheet)
+    def sheetOpt: Option[StyleSheet] = Option(value.sheet)
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/embedded-content.html#audiotracklist
     */
-  implicit class SaferAudioTrackList(val value: org.danielnixon.saferdom.raw.AudioTrackList) extends AnyVal {
-    def getTrackById(id: String): Option[AudioTrack] = Option(value.getTrackById(id))
+  implicit class SaferAudioTrackList(val value: AudioTrackList) extends AnyVal {
+    def getTrackByIdOpt(id: String): Option[AudioTrack] = Option(value.getTrackById(id))
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/embedded-content.html#texttrackcuelist
     */
-  implicit class SaferTextTrackCueList(val value: org.danielnixon.saferdom.raw.TextTrackCueList) extends AnyVal {
-    def getCueById(id: String): Option[TextTrackCue] = Option(value.getCueById(id))
+  implicit class SaferTextTrackCueList(val value: TextTrackCueList) extends AnyVal {
+    def getCueByIdOpt(id: String): Option[TextTrackCue] = Option(value.getCueById(id))
   }
 
   /**
     * @see https://w3c.github.io/FileAPI/#dfn-filereader
     */
-  implicit class SaferFileReader(val value: org.danielnixon.saferdom.raw.FileReader) extends AnyVal {
+  implicit class SaferFileReader(val value: FileReader) extends AnyVal {
     /**
       * A DOMError representing the error that occurred while reading the file.
       *
       * MDN
       */
-    def error: Option[DOMError] = Option(value.error)
+    def errorOpt: Option[DOMError] = Option(value.error)
 
     /**
       * The file's contents. This property is only valid after the read operation is
@@ -788,7 +783,7 @@ package object lib {
       *
       * MDN
       */
-    def result: Option[scalajs.js.Any] = Option(value.result)
+    def resultOpt: Option[scalajs.js.Any] = Option(value.result)
   }
 
 }

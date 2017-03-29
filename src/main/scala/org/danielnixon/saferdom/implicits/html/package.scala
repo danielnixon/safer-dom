@@ -1,6 +1,8 @@
 package org.danielnixon.saferdom.implicits
 
-import org.danielnixon.saferdom.raw._
+import org.scalajs.dom.raw._
+
+import scala.scalajs.js
 
 package object html {
 
@@ -8,14 +10,14 @@ package object html {
     * @see https://html.spec.whatwg.org/multipage/dom.html#the-document-object
     * @see https://dom.spec.whatwg.org/#interface-document
     */
-  implicit class SaferHTMLDocument(val value: org.danielnixon.saferdom.raw.HTMLDocument) extends AnyVal {
+  implicit class SaferHTMLDocument(val value: HTMLDocument) extends AnyVal {
     /**
       * In browsers returns the window object associated with the document or null if none
       * available.
       *
       * MDN
       */
-    def defaultView: Option[Window] = Option(value.defaultView)
+    def defaultViewOpt: Option[Window] = Option(value.defaultView)
 
     /**
       * Returns the &lt;head&gt; element of the current document. If there are more than one
@@ -23,7 +25,7 @@ package object html {
       *
       * MDN
       */
-    def head: Option[HTMLHeadElement] = Option(value.head)
+    def headOpt: Option[HTMLHeadElement] = Option(value.head)
 
     /**
       * Returns the &lt;body&gt; or &lt;frameset&gt; node of the current document, or null if no such
@@ -31,8 +33,7 @@ package object html {
       *
       * MDN
       */
-    def body: Option[HTMLElement] = Option(value.body)
-    def body_=(v: HTMLElement): Unit = value.body = v
+    def bodyOpt: Option[HTMLElement] = Option(value.body)
 
     /**
       * Returns the currently focused element, that is, the element that will get
@@ -40,13 +41,13 @@ package object html {
       *
       * MDN
       */
-    def activeElement: Option[Element] = Option(value.activeElement)
+    def activeElementOpt: Option[Element] = Option(value.activeElement)
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/tables.html#the-table-element
     */
-  implicit class SaferHTMLTableElement(val value: org.danielnixon.saferdom.raw.HTMLTableElement) extends AnyVal {
+  implicit class SaferHTMLTableElement(val value: HTMLTableElement) extends AnyVal {
     /**
       * Is an HTMLTableSectionElement representing the first &lt;tfoot&gt; that is a child of
       * the element, or null if none is found. When set, if the object doesn't represent a
@@ -58,8 +59,7 @@ package object html {
       *
       * MDN
       */
-    def tFoot: Option[HTMLTableSectionElement] = Option(value.tFoot)
-    def tFoot_=(v: HTMLTableSectionElement): Unit = value.tFoot = v
+    def tFootOpt: Option[HTMLTableSectionElement] = Option(value.tFoot)
 
     /**
       * Is an HTMLTableCaptionElement representing the first &lt;caption&gt; that is a child of
@@ -71,8 +71,7 @@ package object html {
       *
       * MDN
       */
-    def caption: Option[HTMLTableCaptionElement] = Option(value.caption)
-    def caption_=(v: HTMLTableCaptionElement): Unit = value.caption = v
+    def captionOpt: Option[HTMLTableCaptionElement] = Option(value.caption)
 
     /**
       * Is an HTMLTableSectionElement representing the first &lt;thead&gt; that is a child of
@@ -85,14 +84,13 @@ package object html {
       *
       * MDN
       */
-    def tHead: Option[HTMLTableSectionElement] = Option(value.tHead)
-    def tHead_=(v: HTMLTableSectionElement): Unit = value.tHead = v
+    def tHeadOpt: Option[HTMLTableSectionElement] = Option(value.tHead)
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/forms.html#htmlselectelement
     */
-  implicit class SaferHTMLSelectElement(val value: org.danielnixon.saferdom.raw.HTMLSelectElement) extends AnyVal {
+  implicit class SaferHTMLSelectElement(val value: HTMLSelectElement) extends AnyVal {
     /**
       * The form that this element is associated with. If this element is a descendant of a
       * form element, then this attribute is the ID of that form element. If the element is
@@ -101,19 +99,28 @@ package object html {
       *
       * MDN
       */
-    def form: Option[HTMLFormElement] = Option(value.form)
+    def formOpt: Option[HTMLFormElement] = Option(value.form)
 
-    def item(index: Int): Option[Element] = Option(value.item(index))
+    // TODO: Fix underlying types in HTMLSelectElement.
+    def itemOpt(index: Int): Option[Element] = {
+      Option(value.asInstanceOf[js.Dynamic].item(index).asInstanceOf[Element])
+    }
 
-    def namedItem(name: String): Option[HTMLOptionElement] = Option(value.namedItem(name))
+    // TODO: Fix underlying types in HTMLSelectElement.
+    def namedItemOpt(name: String): Option[HTMLOptionElement] = {
+      Option(value.namedItem(name).asInstanceOf[HTMLOptionElement])
+    }
 
-    def apply(index: Int): Option[Element] = Option(value.apply(index))
+    // TODO: Fix underlying types in HTMLSelectElement.
+    def applyOpt(index: Int): Option[Element] = {
+      Option(value.asInstanceOf[js.Dynamic].apply(index).asInstanceOf[Element])
+    }
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/forms.html#the-option-element
     */
-  implicit class SaferHTMLOptionElement(val value: org.danielnixon.saferdom.raw.HTMLOptionElement) extends AnyVal {
+  implicit class SaferHTMLOptionElement(val value: HTMLOptionElement) extends AnyVal {
     /**
       * If the option is a descendant of a &lt;select&gt; element, then this property has the same
       * value as the form property of the corresponding HTMLSelectElement object;
@@ -121,13 +128,13 @@ package object html {
       *
       * MDN
       */
-    def form: Option[HTMLFormElement] = Option(value.form)
+    def formOpt: Option[HTMLFormElement] = Option(value.form)
   }
 
   /**
     * @see https://dom.spec.whatwg.org/#htmlcollection
     */
-  implicit class SaferHTMLCollection(val value: org.danielnixon.saferdom.raw.HTMLCollection) extends AnyVal {
+  implicit class SaferHTMLCollection(val value: HTMLCollection) extends AnyVal {
     /**
       * Returns the specific node whose ID or, as a fallback, name matches the string
       * specified by name. Matching by name is only done as a last resort, only in HTML, and
@@ -136,13 +143,13 @@ package object html {
       *
       * MDN
       */
-    def namedItem(name: String): Option[Element] = Option(value.namedItem(name))
+    def namedItemOpt(name: String): Option[Element] = Option(value.namedItem(name))
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/forms.html#the-button-element
     */
-  implicit class SaferHTMLButtonElement(val value: org.danielnixon.saferdom.raw.HTMLButtonElement) extends AnyVal {
+  implicit class SaferHTMLButtonElement(val value: HTMLButtonElement) extends AnyVal {
     /**
       * The form that this button is associated with. If the button is a descendant of a form
       * element, then this attribute is the ID of that form element. If the button is not a
@@ -151,46 +158,46 @@ package object html {
       *
       * MDN
       */
-    def form: Option[HTMLFormElement] = Option(value.form)
+    def formOpt: Option[HTMLFormElement] = Option(value.form)
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/forms.html#the-label-element
     */
-  implicit class SaferHTMLLabelElement(val value: org.danielnixon.saferdom.raw.HTMLLabelElement) extends AnyVal {
+  implicit class SaferHTMLLabelElement(val value: HTMLLabelElement) extends AnyVal {
     def form: Option[HTMLFormElement] = Option(value.form)
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/forms.html#the-legend-element
     */
-  implicit class SaferHTMLLegendElement(val value: org.danielnixon.saferdom.raw.HTMLLegendElement) extends AnyVal {
-    def form: Option[HTMLFormElement] = Option(value.form)
+  implicit class SaferHTMLLegendElement(val value: HTMLLegendElement) extends AnyVal {
+    def formOpt: Option[HTMLFormElement] = Option(value.form)
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/embedded-content.html#the-iframe-element
     */
-  implicit class SaferHTMLIFrameElement(val value: org.danielnixon.saferdom.raw.HTMLIFrameElement) extends AnyVal {
+  implicit class SaferHTMLIFrameElement(val value: HTMLIFrameElement) extends AnyVal {
     /**
       * The window proxy for the nested browsing context.
       *
       * MDN
       */
-    def contentWindow: Option[Window] = Option(value.contentWindow)
+    def contentWindowOpt: Option[Window] = Option(value.contentWindow)
 
     /**
       * The active document in the inline frame's nested browsing context.
       *
       * MDN
       */
-    def contentDocument: Option[Document] = Option(value.contentDocument)
+    def contentDocumentOpt: Option[Document] = Option(value.contentDocument)
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/forms.html#the-input-element
     */
-  implicit class SaferHTMLInputElement(val value: org.danielnixon.saferdom.raw.HTMLInputElement) extends AnyVal {
+  implicit class SaferHTMLInputElement(val value: HTMLInputElement) extends AnyVal {
     /**
       * The containing form element, if this element is in a form. If this element is not
       * contained in a form element: HTML5 this can be the id attribute of any &lt;form&gt; element
@@ -199,9 +206,9 @@ package object html {
       *
       * MDN
       */
-    def form: Option[HTMLFormElement] = Option(value.form)
+    def formOpt: Option[HTMLFormElement] = Option(value.form)
 
-    def files: Option[FileList] = Option(value.files)
+    def filesOpt: Option[FileList] = Option(value.files)
 
     /**
       * Identifies a list of pre-defined options to suggest to the user. The value must be
@@ -211,13 +218,13 @@ package object html {
       *
       * MDN
       */
-    def list: Option[HTMLElement] = Option(value.list)
+    def listOpt: Option[HTMLElement] = Option(value.list)
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/forms.html#the-textarea-element
     */
-  implicit class SaferHTMLTextAreaElement(val value: org.danielnixon.saferdom.raw.HTMLTextAreaElement) extends AnyVal {
+  implicit class SaferHTMLTextAreaElement(val value: HTMLTextAreaElement) extends AnyVal {
     /**
       * The containing form element, if this element is in a form. If this element is not
       * contained in a form element, it can be the id attribute of any &lt;form&gt; element in the
@@ -225,26 +232,26 @@ package object html {
       *
       * MDN
       */
-    def form: Option[HTMLFormElement] = Option(value.form)
+    def formOpt: Option[HTMLFormElement] = Option(value.form)
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/embedded-content.html#htmlmediaelement
     */
-  implicit class SaferHTMLMediaElement(val value: org.danielnixon.saferdom.raw.HTMLMediaElement) extends AnyVal {
+  implicit class SaferHTMLMediaElement(val value: HTMLMediaElement) extends AnyVal {
     /**
       * The MediaError object for the most recent error, or null if there has not been an
       * error.
       *
       * MDN
       */
-    def error: Option[MediaError] = Option(value.error)
+    def errorOpt: Option[MediaError] = Option(value.error)
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/forms.html#the-fieldset-element
     */
-  implicit class SaferHTMLFieldSetElement(val value: org.danielnixon.saferdom.raw.HTMLFieldSetElement) extends AnyVal {
+  implicit class SaferHTMLFieldSetElement(val value: HTMLFieldSetElement) extends AnyVal {
     /**
       * The containing form element, if this element is in a form. If the button is not a
       * descendant of a form element, then the attribute can be the ID of any form element in
@@ -252,13 +259,22 @@ package object html {
       *
       * MDN
       */
-    def form: Option[HTMLFormElement] = Option(value.form)
+    def formOpt: Option[HTMLFormElement] = Option(value.form)
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/dom.html#htmlelement
     */
-  implicit class SaferHTMLElement(val value: org.danielnixon.saferdom.raw.HTMLElement) extends AnyVal {
+  implicit class SaferHTMLElement(val value: HTMLElement) extends AnyVal {
+
+    /**
+      * Returns an Element that is the parent of this node. If the node has no parent, or if
+      * that parent is not an Element, this property returns null.
+      *
+      * MDN
+      */
+    def parentElementOpt: Option[Element] = Option(value.parentElement)
+
     /**
       * Returns the Document that this node belongs to. If no document is associated with
       * it, returns null.
@@ -268,19 +284,19 @@ package object html {
       * This is defined on Node; we override it here because we know (from the fact that this
       * is an HTMLElement) that we are getting an HTMLDocument here.
       */
-    def ownerDocument: Option[HTMLDocument] = Option(value.ownerDocument)
+    def ownerDocumentOpt: Option[HTMLDocument] = Option(value.ownerDocument)
   }
 
   /**
     * @see https://html.spec.whatwg.org/multipage/embedded-content.html#the-object-element
     */
-  implicit class SaferHTMLObjectElement(val value: org.danielnixon.saferdom.raw.HTMLObjectElement) extends AnyVal {
+  implicit class SaferHTMLObjectElement(val value: HTMLObjectElement) extends AnyVal {
     /**
       * The object element's form owner, or null if there isn't one.
       *
       * MDN
       */
-    def form: Option[HTMLFormElement] = Option(value.form)
+    def formOpt: Option[HTMLFormElement] = Option(value.form)
 
     /**
       * The active document of the object element's nested browsing context, if any;
@@ -288,6 +304,6 @@ package object html {
       *
       * MDN
       */
-    def contentDocument: Option[Document] = Option(value.contentDocument)
+    def contentDocumentOpt: Option[Document] = Option(value.contentDocument)
   }
 }
