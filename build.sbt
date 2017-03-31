@@ -1,5 +1,3 @@
-import scalatex.ScalatexReadme
-
 lazy val root = project.in(file(".")).
   enablePlugins(ScalaJSPlugin)
 
@@ -50,19 +48,3 @@ pomExtra := {
 }
 
 pomIncludeRepository := { _ => false }
-
-lazy val readme = ScalatexReadme(
-  folder = "readme",
-  url = "https://github.com/danielnixon/safer-dom/tree/master",
-  source = "Index",
-  targetFolder = "target/site",
-  autoResources = Seq("example-opt.js")
-).settings(
-  scalaVersion := "2.11.8",
-  (resources in Compile) += (fullOptJS in (example, Compile)).value.data
-)
-
-lazy val example = project.
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings: _*).
-  dependsOn(root)

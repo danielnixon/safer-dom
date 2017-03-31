@@ -1,5 +1,5 @@
 all:
-	sbt package doc scalafmtTest && sbt ++2.11.8 readme/run
+	sbt package scalafmtTest
 
 dist:
 	sbt +publishSigned
