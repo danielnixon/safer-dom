@@ -1,4 +1,4 @@
-package org.danielnixon.saferdom.implicits
+package org.danielnixon.saferdom.impl
 
 import org.scalajs.dom.raw._
 
