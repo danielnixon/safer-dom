@@ -23,4 +23,7 @@ Usage
   
   can be now be written as:
   
-  `window.document.querySelectorOpt("nope").foreach(_.innerHTML = "foo")`
+  ```
+  import org.danielnixon.saferdom.implicits._
+  window.document.querySelectorOpt("nope").foreach(_.innerHTML = "foo")
+  ```
