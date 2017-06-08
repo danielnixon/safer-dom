@@ -3,7 +3,7 @@ lazy val root = project.in(file(".")).
 
 name := "Safer DOM"
 
-crossScalaVersions in ThisBuild := Seq("2.11.8", "2.10.6", "2.12.1")
+crossScalaVersions in ThisBuild := Seq("2.11.11", "2.10.6", "2.12.2", "2.13.0-M1")
 scalaVersion in ThisBuild := crossScalaVersions.value.head
 
 val commonSettings = Seq(
@@ -16,7 +16,7 @@ normalizedName := "safer-dom"
 
 commonSettings
 
-libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.1"
+libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.2"
 
 homepage := Some(url("https://github.com/danielnixon/safer-dom"))
 
